@@ -11,6 +11,10 @@
   },
   "author": "Wes Bos",
   "license": "MIT",
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/wesbos/Learn-Redux.git"
+  },
   "dependencies": {
     "react-button": "*",
     "react-radio-group": "*",
