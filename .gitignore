@@ -5,3 +5,4 @@ bundle.js
 *.log
 course.md
 video-notes/
+venv/
