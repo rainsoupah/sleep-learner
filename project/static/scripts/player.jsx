@@ -11,17 +11,39 @@ var WordAndDefinition = React.createClass({
 });
 
 var Player = React.createClass({
+
+  wordData: [
+    {
+      word: 'abscond',
+      definition: 'leave hurriedly and secretly, typically to avoid detection of or arrest for an unlawful action such as theft',
+    },
+  ],
+
+  onPlayClick: function() {
+    // Putting period makes it pause a little
+    var word = this.wordData[0].word;
+    var definition = this.wordData[0].definition;
+    var textData = word + ' . ' + definition;
+
+    $.get('/player/tts/', {
+      text: textData,
+    }, function(audio_url){
+      var sound = new Audio(audio_url);
+      sound.play();
+    });
+  },
+
   render: function() {
     return (
       <div class="player">
         <table><tr>
           <td>
-            <btn className="btn btn-default play-button">
+            <btn className="btn btn-default play-button" onClick={this.onPlayClick}>
               <i className="glyphicon glyphicon-play-circle"></i>
             </btn>
           </td>
           <td>
-            <WordAndDefinition word="abscond" definition="leave hurriedly and secretly, typically to avoid detection of or arrest for an unlawful action such as theft" />
+            <WordAndDefinition word={this.wordData[0].word} definition={this.wordData[0].definition} />
           </td>
         </tr></table>
       </div>
