@@ -6,3 +6,4 @@ bundle.js
 course.md
 video-notes/
 venv/
+*.pyc

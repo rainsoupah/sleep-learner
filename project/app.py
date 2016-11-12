@@ -1,21 +1,15 @@
 from flask import Flask
 from flask import render_template
-from flask import send_file
+
+from controllers.player import player_app
 
 app = Flask(__name__)
+app.register_blueprint(player_app)
 
 
 @app.route('/')
 def hello():
   return render_template('hello.html')
-
-
-@app.route('/sound.wav')
-def test_sound_file():
-  return send_file(
-    'static/sound/test.wav',
-    mimetype='audio/wav'
-  )
 
 
 if __name__ == '__main__':
