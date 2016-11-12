@@ -17,8 +17,10 @@
 }
 
 .play-button {
-  font-size: 10em;
-  height: 1.2em;
+  font-size: 7em;
+  height: 1.4em;
+  width: 1.4em;
+  text-align: center;
 }
 
 .word-and-definition {

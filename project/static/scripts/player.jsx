@@ -39,9 +39,14 @@ var Player = React.createClass({
   },
 
   onPlayClick: function() {
-    this.setState({'isPlaying': true}, function(){
-      this.playWord();
-    });
+    if(this.state.isPlaying){
+      this.setState({'isPlaying': false});
+    }
+    else{
+      this.setState({'isPlaying': true}, function(){
+        this.playWord();
+      });
+    }
   },
 
   playWord: function() {
@@ -70,9 +75,14 @@ var Player = React.createClass({
         // Wait for it to finish
         setTimeout(function(){
           // Do next one
-          self.setState({'currentIndex': self.state.currentIndex+1}, function(){
-            self.playWord();
-          });
+          if(ix < self.wordData.length - 1){
+            self.setState({'currentIndex': ix+1}, function(){
+              self.playWord();
+            });
+          }
+          else{
+            self.setState({'currentIndex': 0, 'isPlaying': false});
+          }
         }, sound.duration * 1000 + 1000);
       });
     });
@@ -82,12 +92,15 @@ var Player = React.createClass({
     var ix = this.state.currentIndex;
     var word = this.wordData[ix].word;
     var definition = this.wordData[ix].definition;
+    var classNames = 'glyphicon ' +
+      (this.state.isPlaying ? 'glyphicon-play' : 'glyphicon-pause');
+
     return (
       <div class="player">
         <table><tr>
           <td>
             <btn className="btn btn-default play-button" onClick={this.onPlayClick}>
-              <i className="glyphicon glyphicon-play-circle"></i>
+              <i className={classNames}></i>
             </btn>
           </td>
           <td>
