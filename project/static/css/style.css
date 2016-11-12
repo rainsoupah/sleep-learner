@@ -1,7 +1,6 @@
 .container {
-  text-align: center;
-  padding-top: 50px;
-  max-width: 300px;
+  margin: 15% 35%;
+  max-width: 30%;
 }
 
 .player-container {
