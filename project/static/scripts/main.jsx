@@ -1,6 +1,6 @@
 var SleepTest = React.createClass({
   getInitialState() {
-    return { 
+    return {
       currentCard : 1,
       totalCards: 10,
       wordSet: {}
@@ -8,7 +8,7 @@ var SleepTest = React.createClass({
   },
 
   yes(e) {
-    document.querySelector('.card').classList.toggle('flipped');
+    //document.querySelector('.card').classList.toggle('flipped');
     if (this.state.currentCard >= this.state.totalCards) {
       console.log("Go to next page");
       // reset currentCard, go to different react router
@@ -21,7 +21,7 @@ var SleepTest = React.createClass({
   },
 
   no(e) {
-    document.querySelector('.card').classList.toggle('flipped');
+    //document.querySelector('.card').classList.toggle('flipped');
     if (this.state.currentCard >= this.state.totalCards) {
       console.log("Go to next page");
       // reset currentCard, go to different react router
@@ -53,8 +53,8 @@ var SleepTest = React.createClass({
           <button className="hvr-float-shadow" onClick={this.yes}>{yes}</button>
           <button style={{float: 'right'}} className="hvr-float-shadow" onClick={this.no}>{no}</button>
         </div>
-        
-      </div>   
+
+      </div>
     );
   }
 });

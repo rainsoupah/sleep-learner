@@ -28,7 +28,8 @@ def request_tts():
 @player_app.route('/player/words')
 def request_word():
 	# test data wordlist
-	wordlist=[{'word': "a", 'defin': "a is a"},{'word': "b", 'defin': "b is b"}, {'word': "c", 'defin': "c is c"}, {'word': "d", 'defin': "d is d"}, {'word': "e", 'defin': "e is e"},{'word': "f", 'defin': "f is f"},{'word': "g", 'defin': "g is g"},{'word': "h", 'defin': "h is h"},{'word': "i", 'defin': "i is i"},{'word': "j", 'defin': "j is j"}]
+	#csvfile = open('./words.csv', 'r')
+	wordlist=[{'word': "a", 'defin': "a is a"},{'word': "b", 'defin': "b is b"}, {'word': "c", 'defin': "c is c"}, {'word': "d", 'defin': "d is d"}, {'word': "e", 'defin': "e is e"},{'word': "f", 'defin': "f is f"},{'word': "g", 'defin': "g is g"},{'word': "h", 'defin': "h is h"},{'word': "i", 'defin': "i is i"},{'word': "j", 'defin': "j is j"},]
 	return jsonify(results=wordlist)
 
 @player_app.route('/player/wav/<path:url>')
