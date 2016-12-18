@@ -1,18 +1,28 @@
 var SleepTest = React.createClass({
+
   getInitialState() {
     return {
-      currentCard : 1,
+      currentCard : 0,
       totalCards: 10,
-      wordSet: {}
+      cardList: [],
     };
   },
 
+  componentWillMount() {
+    var self = this;
+
+    // When component is first loaded, make AJAX call to request list of
+    // words and definitions
+    $.getJSON('/player/words', function(data){
+      self.setState({cardList: data.results});
+    });
+  },
+
   yes(e) {
-    //document.querySelector('.card').classList.toggle('flipped');
-    if (this.state.currentCard >= this.state.totalCards) {
+    if (this.state.currentCard >= this.state.totalCards - 1) {
       console.log("Go to next page");
       // reset currentCard, go to different react router
-      this.setState({currentCard:1});
+      this.setState({currentCard:0});
     } else {
       this.setState({currentCard: this.state.currentCard+1});
       // record in database
@@ -21,37 +31,46 @@ var SleepTest = React.createClass({
   },
 
   no(e) {
-    //document.querySelector('.card').classList.toggle('flipped');
-    if (this.state.currentCard >= this.state.totalCards) {
+    if (this.state.currentCard >= this.state.totalCards - 1) {
       console.log("Go to next page");
       // reset currentCard, go to different react router
-      this.setState({currentCard:1});
+      this.setState({currentCard:0});
     } else {
       this.setState({currentCard: this.state.currentCard+1});
       // record in database
     }
   },
 
-  handleData:function(data) {
-    word = data.results[this.state.currentCard-1];
-    this.setState({wordSet:word});
-  },
-
   render: function() {
-    var yes = "I know";
-    var no = "I don't know";
+    if(this.state.cardList.length == 0){
+      return null;
+    }
 
-    // ajax request word call
-    $.getJSON('/player/words', this.handleData);
+    var currentCard = this.state.cardList[this.state.currentCard];
 
     return (
       <div className="card">
         <div className="front">
-          <h2>Word {this.state.currentCard}/{this.state.totalCards}</h2>
-          <div className="subheader">{this.state.wordSet.word}</div>
-          <p>{this.state.wordSet.defin}</p>
-          <button className="hvr-float-shadow" onClick={this.yes}>{yes}</button>
-          <button style={{float: 'right'}} className="hvr-float-shadow" onClick={this.no}>{no}</button>
+          <h2>
+            Word {this.state.currentCard+1}/{this.state.totalCards}
+          </h2>
+
+          <div className="subheader">
+            {currentCard.word}
+          </div>
+
+          <p>
+            {currentCard.defin}
+          </p>
+
+          <button className="hvr-float-shadow" onClick={this.yes}>
+            I know
+          </button>
+
+          <button style={{float: 'right'}} className="hvr-float-shadow" onClick={this.no}>
+            I don't know
+          </button>
+
         </div>
 
       </div>
