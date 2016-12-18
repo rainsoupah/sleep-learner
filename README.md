@@ -17,3 +17,8 @@ https://github.com/realpython/ultimate-flask-front-end
 ## Running
 1. make dev
 2. Go to localhost:5000
+
+## Running /player
+1. sudo pip install gtts
+2. make dev
+3. Go to localhost:5000/player
