@@ -3,7 +3,7 @@ var SleepTest = React.createClass({
   getInitialState() {
     return {
       currentCard : 0,
-      totalCards: 10,
+      totalCards: 0,
       cardList: [],
     };
   },
@@ -13,8 +13,12 @@ var SleepTest = React.createClass({
 
     // When component is first loaded, make AJAX call to request list of
     // words and definitions
-    $.getJSON('/player/words', function(data){
-      self.setState({cardList: data.results});
+    $.getJSON('/quiz/words', function(data){
+      self.setState({
+        currentCard: 0,
+        totalCards: data.results.length,
+        cardList: data.results,
+      });
     });
   },
 
@@ -82,15 +86,3 @@ ReactDOM.render(
   <SleepTest/>,
   document.getElementById('root')
 );
-
-    /*// Alternative: infinite loop over data do not use
-    $.ajax({
-      url: "/player/words",
-      type: 'GET',
-      success: function(data) {
-        console.log("got word");
-        //word = data.results[0];
-        word = data.results[this.state.currentCard-1];
-        this.setState({wordSet:word});
-      }
-    });*/
