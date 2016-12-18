@@ -10,18 +10,18 @@ var size = require('gulp-size');
 // tasks
 
 gulp.task('transform', function () {
-  var stream = gulp.src('./project/static/scripts/jsx/*.js')
+  var stream = gulp.src('./project/static/dist/jsx/*.js')
     .pipe(gulpBrowser.browserify({transform: ['reactify']}))
-    .pipe(gulp.dest('./project/static/scripts/js/'))
+    .pipe(gulp.dest('./project/static/dist/js/'))
     .pipe(size());
   return stream;
 });
 
 gulp.task('del', function () {
-  return del(['./project/static/scripts/js']);
+  return del(['./project/static/dist/js']);
 });
 
 gulp.task('default', ['del'], function () {
   gulp.start('transform');
-  gulp.watch('./project/static/scripts/jsx/*.js', ['transform']);
+  gulp.watch('./project/static/dist/jsx/*.js', ['transform']);
 });

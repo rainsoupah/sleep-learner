@@ -11,6 +11,8 @@ https://github.com/realpython/ultimate-flask-front-end
 3. pip install -r requirements.txt
 4. npm install
 5. npm install -g bower
+6. (Optional) npm install webpack --save-dev
+7. (Optional) npm install webpack-dev-server -g
 
 ## Running
 1. make dev
