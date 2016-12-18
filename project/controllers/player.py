@@ -19,15 +19,18 @@ player_app = Blueprint('player', __name__)
 def player():
   return render_template('player.html')
 
+
 @player_app.route('/player/tts/')
 def request_tts():
   text = request.args.get('text')
-  url = TextToSpeech.generate_wave(text)
+  url = TextToSpeech.generate_mp3(text)
   return '/player/wav/' + url;
+
 
 @player_app.route('/player/wav/<path:url>')
 def retrieve_wav(url):
   return send_file(TMP_DIR + url, mimetype='audio/wav')
+
 
 @player_app.route('/sound.wav')
 def test_sound_file():
