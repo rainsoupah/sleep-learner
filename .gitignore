@@ -7,3 +7,4 @@ course.md
 video-notes/
 venv/
 *.pyc
+*.db

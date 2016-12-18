@@ -13,5 +13,5 @@ https://github.com/realpython/ultimate-flask-front-end
 5. npm install -g bower
 
 ## Running
-1. sh run.sh
+1. make dev
 2. Go to localhost:5000
