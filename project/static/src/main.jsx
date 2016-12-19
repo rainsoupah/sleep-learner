@@ -107,7 +107,6 @@ var SleepTest = React.createClass({
     if(this.state.cardList.length == 0){
       return null;
     }
-    //console.log(this.state.cardList);
     var currentCard = this.state.cardList[this.state.currentCard];
 
     return (
@@ -137,7 +136,7 @@ var SleepTest = React.createClass({
           </div>
         </div>
 
-        <button style={{display: 'none' }} className="hvr-float-shadow" onClick={this.redirect}>
+        <button style={{display: 'none'}} className="hvr-float-shadow" onClick={this.redirect}>
           Sleep Learn Now...
         </button>
       </div>

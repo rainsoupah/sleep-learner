@@ -22,7 +22,6 @@ var Player = React.createClass({
   componentWillMount() {
     var self = this;
     $.getJSON('/player/words', function(data){
-      console.log("success from component will mount")
       self.setState({
         wordData: data.results,
       });
@@ -80,18 +79,15 @@ var Player = React.createClass({
   },
 
   render: function() {
-    // do not delete
     if(this.state.wordData.length == 0){
       return null;
     }
-
-    console.log(this.state.wordData);
 
     var ix = this.state.currentIndex;
     var word = this.state.wordData[ix].word;
     var definition = this.state.wordData[ix].defin;
     var classNames = 'glyphicon ' +
-      (this.state.isPlaying ? 'glyphicon-play' : 'glyphicon-pause');
+      (this.state.isPlaying ? 'glyphicon-pause' : 'glyphicon-play');
 
     return (
       <div class="player">

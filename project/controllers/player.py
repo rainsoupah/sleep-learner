@@ -4,16 +4,12 @@ from flask import send_file
 from flask import request
 from flask import jsonify
 
+from util.database import get_db_connection
 from util.text_to_speech import TextToSpeech
 from util.text_to_speech import TMP_DIR
 
-import csv
-import json
-import os
-import urllib2, urllib
-
 player_app = Blueprint('player', __name__)
-from util.database import get_db_connection
+
 
 @player_app.route('/player')
 def player():
@@ -32,16 +28,8 @@ def retrieve_wav(url):
   return send_file(TMP_DIR + url, mimetype='audio/wav')
 
 
-@player_app.route('/sound.wav')
-def test_sound_file():
-  return send_file(
-    'static/sound/test.wav',
-    mimetype='audio/wav'
-  )
-
-
 @player_app.route('/player/words')
-def get_unknow_words():
+def get_unknown_words():
   db = get_db_connection()
 
   wordlist = []

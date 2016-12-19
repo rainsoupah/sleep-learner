@@ -16,7 +16,7 @@ def get_words():
   db = get_db_connection()
 
   wordlist = []
-  for _, word, defin,know in db.execute('SELECT * FROM dictionary_entry'):
+  for _, word, defin, know in db.execute('SELECT * FROM dictionary_entry'):
     wordlist.append({
       'word': word,
       'defin': defin,
@@ -25,31 +25,21 @@ def get_words():
 
   return jsonify(results=wordlist)
 
-@quiz_app.route('/quiz/reply',methods=['GET', 'POST'])
-def record():
-    data = request.data
-    #data = '{"first_name": "Guido", "last_name":"Rossum"}'
-    print(data)
-    data = json.loads(data,'utf-8')
 
-    knowledge = data['know']
-    word = data['word']
+@quiz_app.route('/quiz/reply', methods=['POST'])
+def quiz_reply():
+  data = json.loads(request.data, 'utf-8')
 
-    if (knowledge):
-        print ("knowledge of " + word)
-    else:
-        print ("no knowledge of " + word)
+  knowledge = data['know']
+  word = data['word']
 
+  conn = get_db_connection()
+  with conn:
+    cur = conn.cursor()
+    cur.execute(
+      'UPDATE dictionary_entry SET know = ? WHERE word = ?',
+      (knowledge, word)
+    )
+  conn.commit()
 
-    #update value in database
-    conn = get_db_connection()
-    with conn:
-        cur = conn.cursor()
-        cur.execute('''UPDATE dictionary_entry SET know = ? WHERE word = ? ''',
-            (knowledge, word))
-    conn.commit()
-
-    #for _, word, defin,know in conn.execute('SELECT * FROM dictionary_entry'):
-        #print(word + " " + "know: " +know)
-
-    return jsonify(**data)
+  return 'ok'

@@ -3,3 +3,6 @@ dev: init-db
 
 init-db:
 	sh init_db.sh
+
+clean:
+	rm sleep.db
