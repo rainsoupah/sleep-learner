@@ -31,8 +31,25 @@ def record():
     #data = '{"first_name": "Guido", "last_name":"Rossum"}'
     print(data)
     data = json.loads(data,'utf-8')
-    #print(data['know'])
-    return jsonify(**data)
+
+    knowledge = data['know']
+    word = data['word']
+
+    if (knowledge):
+        print ("knowledge of " + word)
+    else:
+        print ("no knowledge of " + word)
+
 
     #update value in database
-    
+    conn = get_db_connection()
+    with conn:
+        cur = conn.cursor()
+        cur.execute('''UPDATE dictionary_entry SET know = ? WHERE word = ? ''',
+            (knowledge, word))
+    conn.commit()
+
+    #for _, word, defin,know in conn.execute('SELECT * FROM dictionary_entry'):
+        #print(word + " " + "know: " +know)
+
+    return jsonify(**data)

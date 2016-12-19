@@ -29,27 +29,27 @@ var SleepTest = React.createClass({
       this.setState({currentCard:0});
     } else {
       this.setState({currentCard: this.state.currentCard+1});
-      // record in database
-      let currentCard = this.state.cardList[this.state.currentCard];
-      var data = {
-        "know": currentCard.know,
-        "word": currentCard.word
-      }
-      // Submit form via jQuery/AJAX
-      $.ajax({
-        type: 'POST',
-        data: JSON.stringify(data),
-        url: '/quiz/reply',
-        contentType:"application/json"
-      })
-      .done(function(data) {
-        console.log('success')
-      })
-      .fail(function(jqXhr) {
-        console.log('failed to register');
-      });
     }
 
+    // record in database
+    let currentCard = this.state.cardList[this.state.currentCard];
+    var data = {
+      "know": 1,
+      "word": currentCard.word
+    }
+    // Submit form via jQuery/AJAX
+    $.ajax({
+      type: 'POST',
+      data: JSON.stringify(data),
+      url: '/quiz/reply',
+      contentType:"application/json"
+    })
+    .done(function(data) {
+      console.log('success')
+    })
+    .fail(function(jqXhr) {
+      console.log('failed to register');
+    });
   },
 
   no(e) {
@@ -59,26 +59,26 @@ var SleepTest = React.createClass({
       this.setState({currentCard:0});
     } else {
       this.setState({currentCard: this.state.currentCard+1});
-      // record in database
-      let currentCard = this.state.cardList[this.state.currentCard];
-      var data = {
-        "know": currentCard.know,
-        "word": currentCard.word
-      }
-      // Submit form via jQuery/AJAX
-      $.ajax({
-        type: 'POST',
-        data: JSON.stringify(data),
-        url: '/quiz/reply',
-        contentType:"application/json"
-      })
-      .done(function(data) {
-        console.log('success')
-      })
-      .fail(function(jqXhr) {
-        console.log('failed to register');
-      });
     }
+    // record in database
+    let currentCard = this.state.cardList[this.state.currentCard];
+    var data = {
+      "know": 0,
+      "word": currentCard.word
+    }
+    // Submit form via jQuery/AJAX
+    $.ajax({
+      type: 'POST',
+      data: JSON.stringify(data),
+      url: '/quiz/reply',
+      contentType:"application/json"
+    })
+    .done(function(data) {
+      console.log('success')
+    })
+    .fail(function(jqXhr) {
+      console.log('failed to register');
+    });
   },
 
   render: function() {

@@ -22,3 +22,6 @@ https://github.com/realpython/ultimate-flask-front-end
 1. sudo pip install gtts
 2. make dev
 3. Go to localhost:5000/player
+
+## Resources
+[x] sqlite3: http://pythoncentral.io/introduction-to-sqlite-in-python/
