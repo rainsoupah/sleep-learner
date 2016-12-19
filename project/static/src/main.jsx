@@ -5,6 +5,7 @@ var SleepTest = React.createClass({
       currentCard : 0,
       totalCards: 0,
       cardList: [],
+      display: "none",
     };
   },
 
@@ -18,16 +19,25 @@ var SleepTest = React.createClass({
         currentCard: 0,
         totalCards: data.results.length,
         cardList: data.results,
+        btn_know: "I know",
+        btn_nknow: "I don't know",
       });
     });
 
   },
 
   yes(e) {
+    if (this.state.currentCard == this.state.totalCards-2) {
+      this.setState({
+        btn_know: "proceed to sleep learn",
+        btn_nknow: "proceed to sleep learn",
+      });
+    }
     if (this.state.currentCard >= this.state.totalCards - 1) {
       console.log("Go to next page");
-      // reset currentCard, go to different react router
+      // reset currentCard, redirect to play page
       this.setState({currentCard:0});
+      this.redirect();
     } else {
       this.setState({currentCard: this.state.currentCard+1});
     }
@@ -54,10 +64,17 @@ var SleepTest = React.createClass({
   },
 
   no(e) {
+    if (this.state.currentCard == this.state.totalCards-2) {
+      this.setState({
+        btn_know: "proceed to sleep learn",
+        btn_nknow: "proceed to sleep learn",
+      });
+    }
     if (this.state.currentCard >= this.state.totalCards - 1) {
       console.log("Go to next page");
-      // reset currentCard, go to different react router
+      // reset currentCard, go to player page
       this.setState({currentCard:0});
+      this.redirect();
     } else {
       this.setState({currentCard: this.state.currentCard+1});
     }
@@ -82,39 +99,49 @@ var SleepTest = React.createClass({
     });
   },
 
+  redirect(e) {
+    location.href='player';
+  },
+
   render: function() {
     if(this.state.cardList.length == 0){
       return null;
     }
-    console.log(this.state.cardList);
+    //console.log(this.state.cardList);
     var currentCard = this.state.cardList[this.state.currentCard];
 
     return (
-      <div className="card">
-        <div className="front">
-          <h2>
-            Word {this.state.currentCard+1}/{this.state.totalCards}
-          </h2>
+      <div>
+        <div className="card">
+          <div className="front">
+            <h2>
+              Word {this.state.currentCard+1}/{this.state.totalCards}
+            </h2>
 
-          <div className="subheader">
-            {currentCard.word}
+            <div className="subheader">
+              {currentCard.word}
+            </div>
+
+            <p>
+              {currentCard.defin}
+            </p>
+
+            <button className="hvr-float-shadow" onClick={this.yes}>
+              {this.state.btn_know}
+            </button>
+
+            <button style={{float: 'right'}} className="hvr-float-shadow" onClick={this.no}>
+              {this.state.btn_nknow}
+            </button>
+
           </div>
-
-          <p>
-            {currentCard.defin}
-          </p>
-
-          <button className="hvr-float-shadow" onClick={this.yes}>
-            I know
-          </button>
-
-          <button style={{float: 'right'}} className="hvr-float-shadow" onClick={this.no}>
-            I don't know
-          </button>
-
         </div>
 
+        <button style={{display: 'none' }} className="hvr-float-shadow" onClick={this.redirect}>
+          Sleep Learn Now...
+        </button>
       </div>
+
     );
   }
 });
