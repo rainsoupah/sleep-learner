@@ -9,9 +9,9 @@ https://github.com/realpython/ultimate-flask-front-end
 1. virtualenv venv
 2. source venv/bin/activate
 3. pip install -r requirements.txt
-4. npm install
-5. npm install -g bower
-6. bower install
+4. sudo npm install -g bower
+5. bower install
+6. npm install --save-dev babel-cli babel-preset-react
 
 ## Running
 1. make dev

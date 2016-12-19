@@ -3,15 +3,15 @@
   <head lang="en">
     <meta charset="UTF-8">
     <title>Sleep Learner</title>
-    <script src="{{ url_for('static', filename='bower_components/react/react.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='bower_components/react/react-dom.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='bower_components/jquery/dist/jquery.min.js') }}"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
-    <script type="text/jsx" src="../static/src/main.jsx"></script>
+    <script src="{{ url_for('static', filename='bower_components/react/react.js') }}"></script>
+    <script src="{{ url_for('static', filename='bower_components/react/react-dom.js') }}"></script>
+    <script src="{{ url_for('static', filename='bower_components/jquery/dist/jquery.js') }}"></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/flashcard.css') }}">
   </head>
 
   <body>
-      <div id="root"></div>
+    <div id="root"></div>
   </body>
+
+  <script src="{{ url_for('static', filename='dist/main.js') }}"></script>
 </html>

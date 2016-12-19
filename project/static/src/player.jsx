@@ -1,23 +1,25 @@
 
-var WordAndDefinition = React.createClass({
-  render: function() {
+class WordAndDefinition extends React.Component {
+  render() {
     return (
       <div className="word-and-definition">
         <p className="word-itself">{this.props.word}</p>
         <p className="word-definition">{this.props.definition}</p>
       </div>
     );
-  },
-});
+  }
+}
 
-var Player = React.createClass({
-  getInitialState: function() {
-    return {
+class Player extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
       isPlaying: false,
       currentIndex: 0,
       wordData: [],
     };
-  },
+  }
 
   componentWillMount() {
     var self = this;
@@ -26,9 +28,9 @@ var Player = React.createClass({
         wordData: data.results,
       });
     });
-  },
+  }
 
-  onPlayClick: function() {
+  onPlayClick() {
     if(this.state.isPlaying){
       this.setState({'isPlaying': false});
     }
@@ -37,9 +39,9 @@ var Player = React.createClass({
         this.playWord();
       });
     }
-  },
+  }
 
-  playWord: function() {
+  playWord() {
     var self = this;
     if(!this.state.isPlaying) {
       return;
@@ -76,9 +78,9 @@ var Player = React.createClass({
         }, sound.duration * 1000 + 1000);
       });
     });
-  },
+  }
 
-  render: function() {
+  render() {
     if(this.state.wordData.length == 0){
       return null;
     }
@@ -103,8 +105,8 @@ var Player = React.createClass({
         </tr></table>
       </div>
     );
-  },
-});
+  }
+}
 
 ReactDOM.render(
   <Player />,

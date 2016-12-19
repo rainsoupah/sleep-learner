@@ -1,13 +1,15 @@
-var SleepTest = React.createClass({
+class SleepTest extends React.Component {
 
-  getInitialState() {
-    return {
+  constructor(props) {
+    super(props);
+
+    this.state = {
       currentCard : 0,
       totalCards: 0,
       cardList: [],
       display: "none",
-    };
-  },
+    }
+  }
 
   componentWillMount() {
     var self = this;
@@ -24,7 +26,7 @@ var SleepTest = React.createClass({
       });
     });
 
-  },
+  }
 
   yes(e) {
     if (this.state.currentCard == this.state.totalCards-2) {
@@ -61,7 +63,7 @@ var SleepTest = React.createClass({
     .fail(function(jqXhr) {
       console.log('failed to register');
     });
-  },
+  }
 
   no(e) {
     if (this.state.currentCard == this.state.totalCards-2) {
@@ -97,13 +99,13 @@ var SleepTest = React.createClass({
     .fail(function(jqXhr) {
       console.log('failed to register');
     });
-  },
+  }
 
   redirect(e) {
     location.href='player';
-  },
+  }
 
-  render: function() {
+  render() {
     if(this.state.cardList.length == 0){
       return null;
     }
@@ -125,25 +127,25 @@ var SleepTest = React.createClass({
               {currentCard.defin}
             </p>
 
-            <button className="hvr-float-shadow" onClick={this.yes}>
+            <button className="hvr-float-shadow" onClick={this.yes.bind(this)}>
               {this.state.btn_know}
             </button>
 
-            <button style={{float: 'right'}} className="hvr-float-shadow" onClick={this.no}>
+            <button style={{float: 'right'}} className="hvr-float-shadow" onClick={this.no.bind(this)}>
               {this.state.btn_nknow}
             </button>
 
           </div>
         </div>
 
-        <button style={{display: 'none'}} className="hvr-float-shadow" onClick={this.redirect}>
+        <button style={{display: 'none'}} className="hvr-float-shadow" onClick={this.redirect.bind(this)}>
           Sleep Learn Now...
         </button>
       </div>
 
     );
   }
-});
+}
 
 ReactDOM.render(
   <SleepTest/>,
