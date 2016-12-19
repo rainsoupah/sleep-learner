@@ -11,17 +11,11 @@ https://github.com/realpython/ultimate-flask-front-end
 3. pip install -r requirements.txt
 4. npm install
 5. npm install -g bower
-6. (Optional) npm install webpack --save-dev
-7. (Optional) npm install webpack-dev-server -g
+6. bower install
 
 ## Running
 1. make dev
 2. Go to localhost:5000
-
-## Running /player
-1. sudo pip install gtts
-2. make dev
-3. Go to localhost:5000/player
 
 ## Resources
 [x] sqlite3: http://pythoncentral.io/introduction-to-sqlite-in-python/

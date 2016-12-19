@@ -1,10 +1,9 @@
 node_modules/
+bower_components/
 dist/
 .DS_Store
 bundle.js
 *.log
-course.md
-video-notes/
 venv/
 *.pyc
 *.db

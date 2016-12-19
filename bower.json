@@ -1,21 +1,8 @@
 {
-  "name": "ultimate-flask-front-end",
-  "homepage": "https://github.com/realpython/ultimate-flask-front-end",
-  "authors": [
-    "Michael Herman michael@realpython.com"
-  ],
-  "description": "",
-  "main": "",
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
+  "name": "sleep-learner",
   "dependencies": {
-    "bootstrap": "^3.3.6",
-    "react": "^15.1.0"
+    "react": "^15.4.1",
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7"
   }
 }
