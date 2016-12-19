@@ -13,7 +13,7 @@ import os
 import urllib2, urllib
 
 player_app = Blueprint('player', __name__)
-
+from util.database import get_db_connection
 
 @player_app.route('/player')
 def player():
@@ -38,3 +38,18 @@ def test_sound_file():
     'static/sound/test.wav',
     mimetype='audio/wav'
   )
+
+
+@player_app.route('/player/words')
+def get_unknow_words():
+  db = get_db_connection()
+
+  wordlist = []
+  for _, word, defin,know in db.execute('SELECT * FROM dictionary_entry WHERE know=0'):
+    wordlist.append({
+      'word': word,
+      'defin': defin,
+      'know': know,
+    })
+
+  return jsonify(results=wordlist)

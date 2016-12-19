@@ -20,6 +20,7 @@ var SleepTest = React.createClass({
         cardList: data.results,
       });
     });
+
   },
 
   yes(e) {
@@ -85,7 +86,7 @@ var SleepTest = React.createClass({
     if(this.state.cardList.length == 0){
       return null;
     }
-
+    console.log(this.state.cardList);
     var currentCard = this.state.cardList[this.state.currentCard];
 
     return (

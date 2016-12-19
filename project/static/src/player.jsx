@@ -11,31 +11,22 @@ var WordAndDefinition = React.createClass({
 });
 
 var Player = React.createClass({
-
-  wordData: [
-    {
-      word: 'abscond',
-      definition: 'run away, often taking something or somebody along',
-    },
-    {
-      word: 'abstruse',
-      definition: 'difficult to penetrate',
-    },
-    {
-      word: 'accede',
-      definition: 'yield to another\'s wish or opinion',
-    },
-    {
-      word: 'accost',
-      definition: 'speak to someone',
-    },
-  ],
-
   getInitialState: function() {
     return {
       isPlaying: false,
       currentIndex: 0,
+      wordData: [],
     };
+  },
+
+  componentWillMount() {
+    var self = this;
+    $.getJSON('/player/words', function(data){
+      console.log("success from component will mount")
+      self.setState({
+        wordData: data.results,
+      });
+    });
   },
 
   onPlayClick: function() {
@@ -57,8 +48,8 @@ var Player = React.createClass({
 
     // Putting period makes it pause a little
     var ix = this.state.currentIndex;
-    var word = this.wordData[ix].word;
-    var definition = this.wordData[ix].definition;
+    var word = this.state.wordData[ix].word;
+    var definition = this.state.wordData[ix].defin;
     var textData = word + ' . ' + definition;
 
     // Request TTS and get audio URL
@@ -75,7 +66,7 @@ var Player = React.createClass({
         // Wait for it to finish
         setTimeout(function(){
           // Do next one
-          if(ix < self.wordData.length - 1){
+          if(ix < self.state.wordData.length - 1){
             self.setState({'currentIndex': ix+1}, function(){
               self.playWord();
             });
@@ -89,9 +80,16 @@ var Player = React.createClass({
   },
 
   render: function() {
+    // do not delete
+    if(this.state.wordData.length == 0){
+      return null;
+    }
+
+    console.log(this.state.wordData);
+
     var ix = this.state.currentIndex;
-    var word = this.wordData[ix].word;
-    var definition = this.wordData[ix].definition;
+    var word = this.state.wordData[ix].word;
+    var definition = this.state.wordData[ix].defin;
     var classNames = 'glyphicon ' +
       (this.state.isPlaying ? 'glyphicon-play' : 'glyphicon-pause');
 
