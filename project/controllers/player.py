@@ -10,7 +10,6 @@ from util.text_to_speech import TMP_DIR
 
 player_app = Blueprint('player', __name__)
 
-
 @player_app.route('/player')
 def player():
   return render_template('player.html')
@@ -33,9 +32,10 @@ def get_unknown_words():
   db = get_db_connection()
 
   wordlist = []
-  for _, word, defin,know in db.execute('SELECT * FROM dictionary_entry WHERE know=0'):
+  for _, word, type, defin, know in db.execute('SELECT * FROM dictionary_entry WHERE know=0'):
     wordlist.append({
       'word': word,
+      'type': type,
       'defin': defin,
       'know': know,
     })

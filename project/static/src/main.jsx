@@ -42,7 +42,7 @@ class SleepTest extends React.Component {
       // Redirect to play page
       location.href='player';
     } else {
-      this.setState({currentCard: this.state.currentCard+1});
+      this.setState({currentCard: this.state.currentCard + 1});
     }
 
     // record in database

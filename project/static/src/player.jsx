@@ -95,7 +95,7 @@ class Player extends React.Component {
       <div class="player">
         <table><tr>
           <td>
-            <btn className="btn btn-default play-button" onClick={this.onPlayClick}>
+            <btn className="btn btn-default play-button" onClick={this.onPlayClick.bind(this)}>
               <i className={classNames}></i>
             </btn>
           </td>
