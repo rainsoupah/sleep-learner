@@ -7,24 +7,31 @@ class SleepTest extends React.Component {
       currentCard : 0,
       totalCards: 0,
       cardList: [],
+      alphabet: 'a',
+      baseURL: '/quiz/words/',
+      btn_know: "I know",
+      btn_nknow: "I don't know",
     }
   }
 
-  componentWillMount() {
+  getData() {
+    var wordsURL = this.state.baseURL + this.state.alphabet;
+    // console.log(wordsURL);
     var self = this;
 
-    // When component is first loaded, make AJAX call to request list of
-    // words and definitions
-    $.getJSON('/quiz/words', function(data){
+    $.getJSON(wordsURL, function(data){
       self.setState({
         currentCard: 0,
         totalCards: data.results.length,
         cardList: data.results,
-        btn_know: "I know",
-        btn_nknow: "I don't know",
       });
     });
+  }
 
+  componentWillMount() {
+    // When component is first loaded, make AJAX call to request list of
+    // words and definitions
+    this.getData();
   }
 
   /**
@@ -52,8 +59,8 @@ class SleepTest extends React.Component {
     $.ajax({
       type: 'POST',
       data: {
-        "know": responseYes,
-        "word": currentCard.word,
+        'know': responseYes,
+        'word': JSON.stringify(currentCard.word),
       },
       url: '/quiz/reply',
       contentType:"application/json"

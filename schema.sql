@@ -3,5 +3,6 @@ CREATE TABLE dictionary_entry (
   word          TEXT    NOT NULL,
   type          TEXT,
   definition    TEXT    NOT NULL,
+  alpha         TEXT    NOT NULL,
   know          INTEGER
 );

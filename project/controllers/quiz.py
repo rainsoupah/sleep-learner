@@ -11,32 +11,22 @@ from util.database import get_db_connection
 
 quiz_app = Blueprint('quiz', __name__)
 
-@quiz_app.route('/quiz/words')
-def get_words():
+@quiz_app.route('/quiz/words/<alphabet>', methods =['GET'])
+def get_words(alphabet):
       db = get_db_connection()
-    #   cur = db.cursor()
-      #
-    #   with open('wordBank.csv','rb') as wordBank:
-    #     # csv.DictReader uses first line in file for column headings by default
-    #     wordNdef = csv.DictReader(wordBank) # comma is default delimiter
-    #     to_db = [(i['word'], i['type'], i['definition'], -1) for i in wordNdef]
-      #
-    #   cur.executemany("INSERT INTO dictionary_entry (word, type, definition, know) VALUES (?, ?, ?, ?);", to_db)
-    #   db.commit()
-
       wordlist = []
-      for idx, word, type, defin, know in db.execute('SELECT * FROM dictionary_entry'):
+      for idx, word, type, defin, _, know in db.execute('SELECT * FROM dictionary_entry WHERE alpha = ?', alphabet): #since words can duplicate
         wordlist.append({
                   'idx':idx,
-                  'word': word,
+                  'word':word,
                   'type':type,
-                  'defin': defin,
-                  'know': know,
+                  'defin':defin,
+                  'know':know,
         })
       return jsonify(results=wordlist)
 
 
-@quiz_app.route('/quiz/reply', methods=['POST'])
+@quiz_app.route('/quiz/reply', methods=['GET','POST'])
 def quiz_reply():
   data = json.loads(request.data, 'utf-8')
 
@@ -47,8 +37,8 @@ def quiz_reply():
   with conn:
     cur = conn.cursor()
     cur.execute(
-      'UPDATE dictionary_entry SET know = ? WHERE idx = ?',
-      (knowledge, idx)
+      'UPDATE dictionary_entry SET know = ? WHERE word = ?',
+      (knowledge, word)
     )
   conn.commit()
 
