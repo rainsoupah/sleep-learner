@@ -19,7 +19,6 @@
   float: right;
 }
 
-
 .flipped{
   transform: rotateY(360deg);
 }
@@ -113,12 +112,12 @@
 
 /*TEXT*/
 
-.front h2{ 
-  color: #7c795d; 
-  font-family: 'Trocchi', serif; 
-  font-size: 45px; 
-  font-weight: normal; 
-  line-height: 48px; 
+.front h2{
+  color: #7c795d;
+  font-family: 'Trocchi', serif;
+  font-size: 45px;
+  font-weight: normal;
+  line-height: 48px;
   margin: 0;
   text-align: right;
 }
@@ -126,7 +125,7 @@
 .front p{ color: #685206; font-family: 'Helvetica Neue', sans-serif; font-size: 14px; line-height: 24px; margin: 0 0 24px; text-align: justify; text-justify: inter-word;}
 
 .subheader{
-  color: #111; font-family: 'Open Sans', sans-serif; font-size: 30px; font-weight: 300; line-height: 32px; margin: 0 0 10px; text-align: left; 
+  color: #111; font-family: 'Open Sans', sans-serif; font-size: 30px; font-weight: 300; line-height: 32px; margin: 0 0 10px; text-align: left;
 }
 
 .hvr-float-shadow {

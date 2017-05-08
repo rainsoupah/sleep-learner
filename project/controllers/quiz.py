@@ -15,7 +15,8 @@ quiz_app = Blueprint('quiz', __name__)
 def get_words(alphabet):
       db = get_db_connection()
       wordlist = []
-      for idx, word, type, defin, _, know in db.execute('SELECT * FROM dictionary_entry WHERE alpha = ?', alphabet): #since words can duplicate
+      toMatch = alphabet + '%'
+      for idx, word, type, defin, know in db.execute('SELECT * FROM dictionary_entry WHERE word LIKE ? AND know != ?', (toMatch,1)): #since words can duplicate
         wordlist.append({
                   'idx':idx,
                   'word':word,
@@ -26,9 +27,11 @@ def get_words(alphabet):
       return jsonify(results=wordlist)
 
 
-@quiz_app.route('/quiz/reply', methods=['GET','POST'])
+@quiz_app.route('/quiz/reply', methods=['POST'])
 def quiz_reply():
-  data = json.loads(request.data, 'utf-8')
+  data = json.loads(request.data)
+
+  # print request.data
 
   knowledge = data['know']
   word = data['word']
@@ -42,4 +45,4 @@ def quiz_reply():
     )
   conn.commit()
 
-  return 'ok'
+  return request.data
