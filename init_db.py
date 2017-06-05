@@ -30,8 +30,8 @@ cur = db.cursor()
 with open('SAT.csv','rb') as wordBank:
     # csv.DictReader uses first line in file for column headings by default
     wordNdef = csv.DictReader(wordBank) # comma is default delimiter
-    to_db = [(i['word'], i['type'], i['definition'], -1) for i in wordNdef]
+    to_db = [(i['word'], i['type'], i['definition']) for i in wordNdef]
 
-cur.executemany("INSERT INTO dictionary_entry (word, type, definition, know) VALUES (?, ?, ?, ?);", to_db)
+cur.executemany("INSERT INTO dictionary_entry (word, type, definition) VALUES (?, ?, ?);", to_db)
 db.commit()
 db.close()
