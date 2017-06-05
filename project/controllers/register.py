@@ -11,14 +11,14 @@ from util.database import get_db_connection
 
 registration = Blueprint('register', __name__)
 
-@registration.route('/signUp', methods =['GET'])
+@registration.route('/signUp', methods =['POST'])
 def signUp():
-
     # read the posted values from the UI
     _name = request.form['inputName']
     _email = request.form['inputEmail']
     _password = request.form['inputPassword']
 
+    # register to DB
     # validate the received values
     if _name and _email and _password:
         return json.dumps({'html':'<span>All fields good !!</span>'})
