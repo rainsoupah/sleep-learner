@@ -1,18 +1,18 @@
-CREATE TABLE dictionary_entry (
+CREATE TABLE IF NOT EXISTS dictionary_entry (
   id            INTEGER PRIMARY KEY AUTOINCREMENT,
   word          TEXT    NOT NULL,
   type          TEXT,
-  definition    TEXT    NOT NULL,
+  definition    TEXT    NOT NULL
 );
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
   id            INTEGER PRIMARY KEY AUTOINCREMENT,
   name          TEXT    NOT NULL,
   email         TEXT    NOT NULL,
-  password      VARCHAR NOT NULL,
+  password      VARCHAR NOT NULL
 );
 
-CREATE TABLE user_response (
+CREATE TABLE IF NOT EXISTS user_response (
   user_id       INTEGER,
-  word_id       INTEGER,
+  word_id       INTEGER
 );
