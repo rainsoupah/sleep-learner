@@ -24,6 +24,6 @@ const mapDispatchToProps = (dispatch) => {
 const AppContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(App)
 
 export default AppContainer

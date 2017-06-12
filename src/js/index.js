@@ -1,11 +1,15 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { Provider } from 'react-redux'
+import store from './store'
+import App from './components/app.js'
+
+render(
+  <App store={store}/> ,
+  document.getElementById('app')
+)
+
 // import { createStore } from 'redux'
 // import sleepLearn from './reducer'
-import store from './store'
-import AppContainer from './containers/AppContainer' //capitalize name of files
-
 // Log the initial state
 // console.log(store.getState())
 // Every time the state changes, log it
@@ -20,11 +24,4 @@ import AppContainer from './containers/AppContainer' //capitalize name of files
 //
 // //unsubscribe();
 // store.dispatch(toggleTodo(0))*/
-
 // final result
-render(
-  <Provider store={store}>
-    <AppContainer />
-  </Provider>,
-  document.getElementById('app')
-)

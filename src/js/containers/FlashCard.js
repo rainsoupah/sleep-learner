@@ -42,6 +42,6 @@ const mapDispatchToProps = (dispatch) => {
 const FlashCard = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Card);
+)(Card)
 
 export default FlashCard
