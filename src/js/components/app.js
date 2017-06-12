@@ -3,21 +3,31 @@ import Welcome from './welcome'
 import Dashboard from './dashboard'
 import AppContainer from '../containers/AppContainer'
 import FlashCard from '../containers/FlashCard'
+import PlayerSummary from './PlayerSummary'
 
 // IMPORT CONTAINER COMPONENT (if presentational component is hooked up to it)
 
 function AppContent(props) {
   const page = props.page;
   var content = null;
-  if (page === "welcome") {
-    content = <Welcome buttonClick={props.onNext}/>
-  } else if (page === "dashboard") {
-    content = <Dashboard buttonClick={props.onNext}/>
-  } else if (page === "card") {
-    content= <FlashCard/>
-  } else {
-    console.log(page);
+
+  switch (page) {
+    case "welcome":
+      content = <Welcome buttonClick={props.onNext}/>
+      break;
+    case "dashboard":
+      content = <Dashboard buttonClick={props.onNext}/>
+      break;
+    case "card":
+      content= <FlashCard buttonClick={props.onNext}/>
+      break;
+    case "playerSummary":
+      content = <PlayerSummary unknownWords={props.unknownWords} buttonClick={props.onNext} />
+      break;
+    default:
+      content = <div>INVALID PAGE</div>
   }
+
   return (
     <div>
       {content}
@@ -25,14 +35,15 @@ function AppContent(props) {
   )
 }
 
-const App = ({ page, onNext }) => (
+const App = ({ page, onNext, unknownWords }) => (
   <div>
-    <AppContent page={page} onNext={onNext}/>
+    <AppContent page={page} unknownWords={unknownWords} onNext={onNext}/>
   </div>
 )
 
 App.propTypes = {
   page: PropTypes.string.isRequired,
+  unknownWords: PropTypes.arrayOf(PropTypes.object).isRequired,
   onNext: PropTypes.func.isRequired
 }
 

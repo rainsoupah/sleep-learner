@@ -2,9 +2,14 @@ import {connect} from 'react-redux'
 import App from '../components/app'
 import { updatePage } from '../actions'
 
+const getUnknownWords = (words, idx) => {
+  return words.filter((word, i) => i < idx)
+}
+
 const mapStateToProps = (state) => {
   return {
-    page: state.page
+    page: state.page,
+    unknownWords: getUnknownWords(state.words, state.wordIdx)
   }
 }
 
