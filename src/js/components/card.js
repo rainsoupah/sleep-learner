@@ -4,11 +4,12 @@ import React, { PropTypes } from 'react'
 
 // when using spread operator (line 9) passes copy of todo
 // takes two props
-const Card = ({ activeWord, activeIdx, onKnowClick }) => (
+const Card = ({ activeWord, activeIdx, onKnowClick, onNotKnowClick }) => (
   <div>
     <div> {activeWord.word} </div>
     <div> {activeWord.defin} </div>
     <button onClick={() => onKnowClick(activeWord.word, activeIdx)}> I Know </button>
+    <button onClick={() => onNotKnowClick()}> I dont Know </button>
   </div>
 )
 

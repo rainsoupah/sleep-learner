@@ -32,6 +32,10 @@ export function addWordToKnow(word, i) {
   return { type: "ADD_WORD_TO_KNOW", word , i}
 }
 
+export function addWordToUnknow() {
+  return { type: "ADD_WORD_TO_UNKNOW"}
+}
+
 export function updatePage(page) {
   return { type: "UPDATE_PAGE", page}
 }
