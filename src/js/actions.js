@@ -28,13 +28,17 @@ export function setAlphaFilter(alphabet) {
 }
 
 // mutates two states (knows and words)
-export function addWordToKnow(word, i) {
-  return { type: "ADD_WORD_TO_KNOW", word , i}
+export function addWordTo(know, word="", i=0) {
+  if (know) {
+    return { type: "ADD_WORD_TO_KNOW", word , i}
+  } else {
+    return { type: "ADD_WORD_TO_UNKNOW" }
+  }
 }
 
-export function addWordToUnknow() {
-  return { type: "ADD_WORD_TO_UNKNOW"}
-}
+// export function addWordToUnknow() {
+//
+// }
 
 export function updatePage(page) {
   return { type: "UPDATE_PAGE", page}

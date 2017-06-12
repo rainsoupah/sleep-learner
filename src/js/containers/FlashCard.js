@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { addWordToKnow, addWordToUnknow } from '../actions'
+import { addWordTo } from '../actions'
 import Card from '../components/card'
 
 // getWords
@@ -33,11 +33,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onKnowClick: (word, i) => {
-      dispatch(addWordToKnow(word, i))
-    },
-    onNotKnowClick: () => {
-      dispatch(addWordToUnknow())
+    onNextClick: (know, word="", i=0) => {
+      dispatch(addWordTo(know, word, i))
     }
   }
 }

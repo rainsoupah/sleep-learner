@@ -4,18 +4,18 @@ import React, { PropTypes } from 'react'
 
 // when using spread operator (line 9) passes copy of todo
 // takes two props
-const Card = ({ activeWord, activeIdx, onKnowClick, onNotKnowClick }) => (
+const Card = ({ activeWord, activeIdx, onNextClick }) => (
   <div>
     <div> {activeWord.word} </div>
     <div> {activeWord.defin} </div>
-    <button onClick={() => onKnowClick(activeWord.word, activeIdx)}> I Know </button>
-    <button onClick={() => onNotKnowClick()}> I dont Know </button>
+    <button onClick={() => onNextClick(true, activeWord.word, activeIdx)}> I Know </button>
+    <button onClick={() => onNextClick(false)}> I dont Know </button>
   </div>
 )
 
 Card.propTypes = {
   activeWord: PropTypes.object.isRequired,
-  onKnowClick: PropTypes.func.isRequired
+  onNextClick: PropTypes.func.isRequired
 }
 
 // <div onClick={() => onKnowClick("123123")}> {activeLetter} </div>
