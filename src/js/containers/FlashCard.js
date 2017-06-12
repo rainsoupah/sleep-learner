@@ -20,17 +20,21 @@ import Card from '../components/card'
 //   }
 // }
 
+const getVocab = (words, idx) => {
+  return words[idx]
+}
+
 const mapStateToProps = (state) => {
   return {
-    activeLetter: state.alphaFilter,
-    wordsKnown: state.knows
+    activeWord: getVocab(state.words, state.wordIdx),
+    activeIdx: state.wordIdx
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onKnowClick: (id) => {
-      dispatch(addWordToKnow(id))
+    onKnowClick: (word, i) => {
+      dispatch(addWordToKnow(word, i))
     }
   }
 }

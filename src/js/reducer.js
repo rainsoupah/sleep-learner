@@ -2,6 +2,18 @@
 import {combineReducers} from 'redux'
 
 // REDUCERS
+
+// handle edge cases
+function wordIdx(state=0, action) {
+  switch (action.type) {
+    case "ADD_WORD_TO_UNKNOW":
+      return state + 1
+      break;
+    default:
+      return state
+  }
+}
+
 function page(state="welcome", action) {
   switch (action.type) {
     case "UPDATE_PAGE":
@@ -32,12 +44,25 @@ function knows(state=[], action) {
   }
 }
 
+function words(state=[], action) {
+  switch (action.type) {
+    case "ADD_WORD_TO_KNOW":
+      // remove word from
+      return [...state.slice(0, action.i), ...state.slice(action.i + 1)]
+      break;
+    default:
+      return state
+  }
+}
+
 // COMBINE REDUCERS
 const sleepLearn = combineReducers(
   {
+    wordIdx,
     page,
     alphaFilter,
-    knows
+    knows,
+    words
   }
 )
 

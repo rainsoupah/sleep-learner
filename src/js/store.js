@@ -12,9 +12,11 @@ import words from './data/words'
 // knows: list of words newly marked as "known" not synced with db yet
 // ideally put this in store.js
 const initialState = {
+  wordIdx: 0,
   page: "welcome",
   alphaFilter: "A",
   knows,
+  words,
 }
 
 // ONLY CREATE 1 STORE for each application, 2nd arg = initial state, 3RD arg=enhancers (brb)
@@ -26,9 +28,9 @@ export default store;
 
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
-// let unsubscribe = store.subscribe(() =>
-//   console.log(store.getState())
-// )
+let unsubscribe = store.subscribe(() =>
+  console.log(store.getState())
+)
 //
 // store.dispatch(addTodo('Learn about actions'))
 // // array indexing applies (0 is the first element)

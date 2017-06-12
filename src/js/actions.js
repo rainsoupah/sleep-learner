@@ -27,12 +27,24 @@ export function setAlphaFilter(alphabet) {
   return { type: "SET_ALPHA_FILTER", alphabet }
 }
 
-export function addWordToKnow(word) {
-  return { type: "ADD_WORD_TO_KNOW", word }
+// mutates two states (knows and words)
+export function addWordToKnow(word, i) {
+  return { type: "ADD_WORD_TO_KNOW", word , i}
 }
 
 export function updatePage(page) {
   return { type: "UPDATE_PAGE", page}
 }
+
+// export function getNextWord() {
+//   return { type: "GET_NEXT_WORD"}
+// }
+//
+// export function getPrevWord() {
+//   return { type: "GET_PREV_WORD"}
+// }
+
+
+
 
 // Add ASYNC actions when connecting with API
