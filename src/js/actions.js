@@ -5,9 +5,9 @@ export function setAlphaFilter(alphabet) {
 }
 
 // mutates two states (knows and words)
-export function addWordTo(know, word="", i=0) {
+export function addWordTo(know, id) {
   if (know) {
-    return { type: "ADD_WORD_TO_KNOW", word , i}
+    return { type: "ADD_WORD_TO_KNOW", id } 
   } else {
     return { type: "ADD_WORD_TO_UNKNOW" }
   }
@@ -18,9 +18,9 @@ export function fetchWords(user) {
   return function (dispatch) {
 
     dispatch({ type: "FETCH_WORDS_START" }) // dispatch action
-    return axios.get("/quiz/words/c")
+    return axios.get("/api/words/c")
         .then((response) => {
-          console.log(response)
+          // console.log(response)
           dispatch({type: "FETCH_WORDS_SUCCESS", payload: response.data.results})
         })
         .catch((err) => {
@@ -29,6 +29,23 @@ export function fetchWords(user) {
 
   }
 }
+
+export function replyWords(user, knownWords) {
+  return function (dispatch) {
+    axios.post('/api/reply', {
+    user,
+    knownWords
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+  }
+}
+
+// post to database
 
 // const to be exported
 // export const VisibilityFilters = {

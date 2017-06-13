@@ -8,11 +8,11 @@ const Welcome = ({getWords}) => (
   <div>
     Welcome to Sleep Learner: loggin here
     <ul> To Dos
-      <li> Connect with Python + database backend</li>
       <li> Implement a timer while "quiz" is running </li>
       <li> Use async actions to get/post data, display progress bar while fetching voices</li>
       <li> user can select decks before "quiz": ex (A,B,C,D...), (word type: noun vs verb vs adj)</li>
       <li> loggin with oauth </li>
+      <li> issue with react router conflicts flask: see catch-all routing</li>
     </ul>
 
     <button>

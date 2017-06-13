@@ -4,6 +4,11 @@ import {combineReducers} from 'redux'
 // REDUCERS
 
 // handle edge cases
+
+function user(state, action) {
+  return 0
+}
+
 function wordIdx(state=0, action) {
   switch (action.type) {
     case "ADD_WORD_TO_UNKNOW":
@@ -27,7 +32,7 @@ function alphaFilter(state="A", action) {
 function knows(state=[], action) {
   switch (action.type) {
     case "ADD_WORD_TO_KNOW":
-      return [...state, action.word]
+      return [...state, action.id]
       break;
     default:
       return state
@@ -67,6 +72,7 @@ function api(state={}, action) {
 // COMBINE REDUCERS
 const sleepLearn = combineReducers(
   {
+    user,
     wordIdx,
     alphaFilter,
     knows,

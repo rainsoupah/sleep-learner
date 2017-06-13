@@ -6,21 +6,26 @@ import { Link } from 'react-router'
 
 // when using spread operator (line 9) passes copy of todo
 // takes two props
-const Card = ({ activeWord, activeIdx, onNextClick }) => (
+const Card = ({ activeWord, activeIdx, knownWords, user, onNextClick, onSummarize }) => (
   <div>
     <div> {activeWord.word} </div>
     <div> {activeWord.defin} </div>
-    <button onClick={() => onNextClick(true, activeWord.word, activeIdx)}> I Know </button>
+    <button onClick={() => onNextClick(true, activeWord.idx)}> I Know </button>
     <button onClick={() => onNextClick(false)}> I dont Know </button>
 
-    <button> <Link to="/playerSummary"> Enough, player summary</Link> </button>
+    <button onClick={() => onSummarize(user, knownWords)}>
+      <Link to="/playerSummary"> Enough, player summary</Link>
+    </button>
 
   </div>
 )
 
 Card.propTypes = {
   activeWord: PropTypes.object.isRequired,
-  onNextClick: PropTypes.func.isRequired
+  knownWords: PropTypes.arrayOf(PropTypes.number).isRequired,
+  user: PropTypes.number.isRequired,
+  onNextClick: PropTypes.func.isRequired,
+  onSummarize: PropTypes.func.isRequired
 }
 
 // <div onClick={() => onKnowClick("123123")}> {activeLetter} </div>
