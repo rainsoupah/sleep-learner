@@ -1,6 +1,8 @@
 // additional installations:
 // npm install --save react-router@2.8.1
 
+// webpack see effects:
+// ./node_modules/.bin/webpack --config webpack.config.js
 var debug = process.env.NODE_ENV !== "production";
 var webpack = require('webpack');
 
@@ -25,7 +27,7 @@ module.exports = {
     historyApiFallback: true,
   },
   output: {
-    path: __dirname + "/src/",
+    path: __dirname + "/project/static/",
     filename: "index.min.js"
   },
   plugins: debug ? [] : [

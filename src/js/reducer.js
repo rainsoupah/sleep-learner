@@ -14,16 +14,6 @@ function wordIdx(state=0, action) {
   }
 }
 
-function page(state="welcome", action) {
-  switch (action.type) {
-    case "UPDATE_PAGE":
-      return action.page
-      break;
-    default:
-      return state
-  }
-}
-
 function alphaFilter(state="A", action) {
   switch (action.type) {
     case "SET_ALPHA_FILTER":
@@ -48,10 +38,28 @@ function words(state=[], action) {
   switch (action.type) {
     case "ADD_WORD_TO_KNOW":
       // remove word from
-      return [...state.slice(0, action.i), ...state.slice(action.i + 1)]
+      return [ ...state.slice(0, action.i), ...state.slice(action.i + 1) ]
       break;
+    case "FETCH_WORDS_SUCCESS":
+      return action.data
     default:
       return state
+  }
+}
+
+function api(state={}, action) {
+  switch(action.type) {
+    case "FETCH_WORDS_START":
+      return { ...state, fetching: true };
+      break;
+    case "FETCH_WORDS_FAIL":
+      return { ...state, fetching: false, error: action.payload };
+      break;
+    case "FETCH_WORDS_SUCCESS":
+      return { ...state, fetching: true, fetched: true };
+      break;
+    default:
+      return state;
   }
 }
 
@@ -59,10 +67,10 @@ function words(state=[], action) {
 const sleepLearn = combineReducers(
   {
     wordIdx,
-    page,
     alphaFilter,
     knows,
-    words
+    words,
+    api
   }
 )
 
@@ -117,3 +125,13 @@ export default sleepLearn;
 // }
 
 // todoApp is the root reducer
+
+// function page(state="welcome", action) {
+//   switch (action.type) {
+//     case "UPDATE_PAGE":
+//       return action.page
+//       break;
+//     default:
+//       return state
+//   }
+// }

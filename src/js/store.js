@@ -1,7 +1,9 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import logger from "redux-logger";
+import thunk from "redux-thunk";
 
 import sleepLearn from './reducer'
 import knows from './data/knows'
@@ -13,14 +15,20 @@ import words from './data/words'
 // ideally put this in store.js
 const initialState = {
   wordIdx: 0,
-  page: "welcome",
   alphaFilter: "A",
   knows,
   words,
+  api: {
+    fetching: false,
+    fetched: false,
+    error: null
+  }
 }
 
 // ONLY CREATE 1 STORE for each application, 2nd arg = initial state, 3RD arg=enhancers (brb)
-const store = createStore(sleepLearn, initialState)
+const middleware = applyMiddleware(thunk, logger())
+const store = createStore(sleepLearn, initialState, middleware)
+
 export default store;
 
 // Log the initial state

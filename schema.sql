@@ -1,3 +1,4 @@
+
 CREATE TABLE IF NOT EXISTS dictionary_entry (
   id            INTEGER PRIMARY KEY AUTOINCREMENT,
   word          TEXT    NOT NULL,

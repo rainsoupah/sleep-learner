@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 
 // import AppContainer from './containers/AppContainer' // DO NOT DELETE capitalize name of container files!!!!
 
-import Welcome from './welcome'
+import WelcomeContainer from '../containers/WelcomeContainer'
 import Dashboard from './dashboard'
 import FlashCard from '../containers/FlashCard'
 import PlayerSummary from './PlayerSummary'
@@ -14,11 +14,12 @@ import Player from './Player'
 
 
 // IMPORT CONTAINER COMPONENT (if presentational component is hooked up to it)
-
+// Notes:
+//  To pass props to react router: <Route path="/" component={App} appName="test app">, then this.props.route.appName
 const App = ({ store }) => (
   <Provider store={store}>
     <Router history={browserHistory}>
-        <Route path="/" component={Welcome}/>
+        <Route path="/" component={WelcomeContainer}/>
         <Route path="/dashboard" component={Dashboard}/>
         <Route path="/quiz" component={FlashCard}/>
         <Route path="/playerSummary" component={PlayerSummary}/>
