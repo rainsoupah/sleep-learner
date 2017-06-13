@@ -10,7 +10,7 @@ const Card = ({ activeWord, activeIdx, knownWords, user, onNextClick, onSummariz
   <div>
     <div> {activeWord.word} </div>
     <div> {activeWord.defin} </div>
-    <button onClick={() => onNextClick(true, activeWord.idx)}> I Know </button>
+    <button onClick={() => onNextClick(true, activeWord.idx, activeIdx)}> I Know </button>
     <button onClick={() => onNextClick(false)}> I dont Know </button>
 
     <button onClick={() => onSummarize(user, knownWords)}>

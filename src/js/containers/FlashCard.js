@@ -35,8 +35,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onNextClick: (know, word="", i=0) => {
-      dispatch(addWordTo(know, word, i))
+    onNextClick: (know, id=0, i=0) => {
+      dispatch(addWordTo(know, id, i))
     },
     onSummarize: (user, knownWords) => {
       dispatch(replyWords(user, knownWords))

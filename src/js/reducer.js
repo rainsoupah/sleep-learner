@@ -43,7 +43,7 @@ function words(state=[], action) {
   switch (action.type) {
     case "ADD_WORD_TO_KNOW":
       // remove word from
-      return [ ...state.slice(0, action.i), ...state.slice(action.i + 1) ]
+      return [ ...state.slice(0, action.sliceIdx), ...state.slice(action.sliceIdx + 1) ]
       break;
     case "FETCH_WORDS_SUCCESS":
       return action.payload
@@ -110,7 +110,7 @@ export default sleepLearn;
 //         return [
 //           ...state,
 //           {
-//             id: action.id,
+//             id: action.sliceIdxd,
 //             text: action.text,
 //             completed: false
 //           }

@@ -5,9 +5,9 @@ export function setAlphaFilter(alphabet) {
 }
 
 // mutates two states (knows and words)
-export function addWordTo(know, id) {
+export function addWordTo(know, id, sliceIdx) {
   if (know) {
-    return { type: "ADD_WORD_TO_KNOW", id } 
+    return { type: "ADD_WORD_TO_KNOW", id, sliceIdx } 
   } else {
     return { type: "ADD_WORD_TO_UNKNOW" }
   }
