@@ -25,7 +25,8 @@ const initialState = {
   }
 }
 
-// ONLY CREATE 1 STORE for each application, 2nd arg = initial state, 3RD arg=enhancers (brb)
+// ONLY CREATE 1 STORE for each application, 2nd arg = initial state, 3RD arg=enhancers
+// logger: logs prev, current and action
 const middleware = applyMiddleware(thunk, logger())
 const store = createStore(sleepLearn, initialState, middleware)
 
@@ -36,9 +37,9 @@ export default store;
 
 // Every time the state changes, log it
 // Note that subscribe() returns a function for unregistering the listener
-let unsubscribe = store.subscribe(() =>
-  console.log(store.getState())
-)
+// let unsubscribe = store.subscribe(() =>
+//   console.log(store.getState())
+// )
 //
 // store.dispatch(addTodo('Learn about actions'))
 // // array indexing applies (0 is the first element)

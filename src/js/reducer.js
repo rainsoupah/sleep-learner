@@ -41,7 +41,8 @@ function words(state=[], action) {
       return [ ...state.slice(0, action.i), ...state.slice(action.i + 1) ]
       break;
     case "FETCH_WORDS_SUCCESS":
-      return action.data
+      return action.payload
+      break;
     default:
       return state
   }
@@ -50,13 +51,13 @@ function words(state=[], action) {
 function api(state={}, action) {
   switch(action.type) {
     case "FETCH_WORDS_START":
-      return { ...state, fetching: true };
+      return { ...state, fetching: true, };
       break;
     case "FETCH_WORDS_FAIL":
-      return { ...state, fetching: false, error: action.payload };
+      return { ...state, fetching: false, error: action.payload, };
       break;
     case "FETCH_WORDS_SUCCESS":
-      return { ...state, fetching: true, fetched: true };
+      return { ...state, fetching: false, fetched: true, };
       break;
     default:
       return state;

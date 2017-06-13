@@ -18,9 +18,10 @@ export function fetchWords(user) {
   return function (dispatch) {
 
     dispatch({ type: "FETCH_WORDS_START" }) // dispatch action
-    axios.get("/quiz/words/b")
+    return axios.get("/quiz/words/c")
         .then((response) => {
-          dispatch({type: "FETCH_WORDS_SUCCESS", data: response.data})
+          console.log(response)
+          dispatch({type: "FETCH_WORDS_SUCCESS", payload: response.data.results})
         })
         .catch((err) => {
           dispatch({type:"FETCH_WORDS_FAIL", payload: err})
