@@ -8,7 +8,7 @@ import WelcomeContainer from '../containers/WelcomeContainer'
 import Dashboard from './dashboard'
 import FlashCard from '../containers/FlashCard'
 import PlayerSummary from './PlayerSummary'
-import Player from './Player'
+import PlayerContainer from '../containers/PlayerContainer'
 
 // import AppContainer from '../containers/AppContainer'
 
@@ -23,7 +23,7 @@ const App = ({ store }) => (
         <Route path="/dashboard" component={Dashboard}/>
         <Route path="/quiz" component={FlashCard}/>
         <Route path="/playerSummary" component={PlayerSummary}/>
-        <Route path="/player" component={Player}/>
+        <Route path="/player" component={PlayerContainer}/>
     </Router>
   </Provider>
 )

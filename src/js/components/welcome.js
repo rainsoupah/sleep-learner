@@ -9,10 +9,11 @@ const Welcome = ({getWords}) => (
     Welcome to Sleep Learner: loggin here
     <ul> To Dos
       <li> Implement a timer while "quiz" is running </li>
-      <li> Use async actions to get/post data, display progress bar while fetching voices</li>
-      <li> user can select decks before "quiz": ex (A,B,C,D...), (word type: noun vs verb vs adj)</li>
-      <li> loggin with oauth </li>
+      <li> loggin form (optional oauth) </li>
+      <li> connect with player, reading definitions</li>
       <li> issue with react router conflicts flask: see catch-all routing</li>
+      <li> UI: display stats dashboard</li>
+      <li> Set time out: automatically display unknown words at "player"</li>
     </ul>
 
     <button>

@@ -2,14 +2,15 @@ import React, {PropTypes} from 'react'
 
 // to pass functions: must add {} around prop
 
-const Player = () => (
+const Player = ({activeWord, activeIdx}) => (
   <div>
-    The Word Player
+    {activeWord.word} , {activeWord.defin}, {activeIdx}
   </div>
 )
 
-// Player.propTypes = {
-//   buttonClick: PropTypes.func.isRequired
-// }
+Player.propTypes = {
+  activeWord: PropTypes.object.isRequired,
+  activeIdx: PropTypes.number.isRequired
+}
 
 export default Player

@@ -23,6 +23,10 @@ const initialState = {
     fetching: false,
     fetched: false,
     error: null
+  },
+  player: {
+    playing: false,
+    activeIdx: 0
   }
 }
 

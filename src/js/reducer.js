@@ -9,6 +9,13 @@ function user(state, action) {
   return 0
 }
 
+function player(state, action) {
+  return {
+    playing: false,
+    activeIdx: 0
+  }
+}
+
 function wordIdx(state=0, action) {
   switch (action.type) {
     case "ADD_WORD_TO_UNKNOW":
@@ -77,7 +84,8 @@ const sleepLearn = combineReducers(
     alphaFilter,
     knows,
     words,
-    api
+    api,
+    player
   }
 )
 
