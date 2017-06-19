@@ -26,7 +26,8 @@ const initialState = {
   },
   player: {
     playing: false,
-    activeIdx: 0
+    activeIdx: 0,
+    audio_url: ""
   }
 }
 

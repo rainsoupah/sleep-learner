@@ -7,7 +7,7 @@ export function setAlphaFilter(alphabet) {
 // mutates two states (knows and words)
 export function addWordTo(know, id, sliceIdx) {
   if (know) {
-    return { type: "ADD_WORD_TO_KNOW", id, sliceIdx } 
+    return { type: "ADD_WORD_TO_KNOW", id, sliceIdx }
   } else {
     return { type: "ADD_WORD_TO_UNKNOW" }
   }
@@ -26,7 +26,24 @@ export function fetchWords(user) {
         .catch((err) => {
           dispatch({type:"FETCH_WORDS_FAIL", payload: err})
         })
+  }
+}
 
+export function fetchVoice(textData) {
+  return function (dispatch) {
+
+    dispatch({ type: "FETCH_VOICE_START" }) // dispatch action
+    return axios.get('/player/tts', {
+      params: {
+        text: textData,
+      }
+    })
+    .then((response) => {
+      dispatch({type: "FETCH_VOICE_SUCCESS", payload: response.data})
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 }
 

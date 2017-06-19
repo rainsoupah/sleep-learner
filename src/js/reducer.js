@@ -9,10 +9,13 @@ function user(state, action) {
   return 0
 }
 
-function player(state, action) {
-  return {
-    playing: false,
-    activeIdx: 0
+function player(state={}, action) {
+  switch (action.type) {
+    case "FETCH_VOICE_SUCCESS":
+      return {...state, audio_url: action.payload,}
+      break;
+    default:
+      return state
   }
 }
 
