@@ -14,6 +14,8 @@ function player(state={}, action) {
     case "FETCH_VOICE_SUCCESS":
       return {...state, audio_url: action.payload,}
       break;
+    case "INCREMENT_PLAYER_INDEX" :
+      return {...state, activeIdx: action.updatedIdx}
     default:
       return state
   }

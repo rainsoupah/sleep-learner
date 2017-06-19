@@ -1,26 +1,18 @@
 import {connect} from 'react-redux'
-import { fetchVoice } from '../actions'
+import { fetchVoice, incrementIdx } from '../actions'
 import Player from '../components/Player.js'
 
-const getActiveWord = (words, idx, playerIdx) => {
+const getAllWords = (words, idx) => {
   const unknownWords = words.filter((word, i) => i < idx)
-  console.log(unknownWords[0]);
-  return unknownWords[playerIdx]
+  return unknownWords
 }
-
-// const playSound = (textData) => {
-//   dispatch(fetchVoice(textData));
-//   var sound = new Audio(audio_url)
-//   sound.addEventListener('loadedmetadata', function(){
-//     sound.play()
-//   })
-// }
 
 const mapStateToProps = (state) => {
   return {
-    activeWord: getActiveWord(state.words, state.wordIdx, state.player.activeIdx),
+    activeWord: getAllWords(state.words, state.wordIdx)[state.player.activeIdx],
     activeIdx: state.player.activeIdx,
-    activeUrl: state.player.audio_url
+    activeUrl: state.player.audio_url,
+    allWords: getAllWords(state.words, state.wordIdx)
   }
 }
 
@@ -28,6 +20,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getUrl: (textData) => {
       dispatch(fetchVoice(textData))
+    },
+    getNextWord: (activeIdx) => {
+      dispatch(incrementIdx(activeIdx))
     }
   }
 }

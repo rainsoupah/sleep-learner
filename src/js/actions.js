@@ -13,6 +13,10 @@ export function addWordTo(know, id, sliceIdx) {
   }
 }
 
+export function incrementIdx(activeIdx) {
+  return { type: "INCREMENT_PLAYER_INDEX", updatedIdx: activeIdx+1 }
+}
+
 // should get words based on user
 export function fetchWords(user) {
   return function (dispatch) {
@@ -61,6 +65,7 @@ export function replyWords(user, knownWords) {
   });
   }
 }
+
 
 // post to database
 
