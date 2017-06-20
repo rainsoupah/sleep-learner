@@ -1,5 +1,6 @@
 // import { VisibilityFilters } from './actions'
 import {combineReducers} from 'redux'
+import { audioReducer as audio } from 'redux-audio'
 
 // REDUCERS
 
@@ -90,7 +91,8 @@ const sleepLearn = combineReducers(
     knows,
     words,
     api,
-    player
+    player,
+    audio
   }
 )
 

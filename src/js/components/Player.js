@@ -1,4 +1,5 @@
 import React, {PropTypes} from 'react'
+import { Audio } from 'redux-audio'
 
 // to pass functions: must add {} around prop
 
@@ -62,6 +63,7 @@ var Player = React.createClass ({
       <div>
         {this.props.activeWord.word} , {this.props.activeWord.defin}
         <button onClick={this.playWord}>PLAY</button>
+        <Audio src={this.props.activeUrl} autoPlay uniqueId='example' controls loop />
       </div>
     )
   }

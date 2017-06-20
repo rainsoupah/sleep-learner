@@ -13,6 +13,7 @@ const Welcome = ({getWords}) => (
       <li> connect with player, reading definitions</li>
       <li> issue with react router conflicts flask: see catch-all routing</li>
       <li> UI: display stats dashboard</li>
+      <li> Play and pause, toggle position like mp3 player</li>
     </ul>
 
     <ul> Optional
