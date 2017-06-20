@@ -69,9 +69,14 @@ var Player = React.createClass ({
 })
 
 
-// Player.propTypes = {
-//   activeWord: PropTypes.object.isRequired,
-//   getUrl: PropTypes.func.isRequired
-// }
+Player.propTypes = {
+  activeWord: PropTypes.object.isRequired,
+  activeIdx: PropTypes.number.isRequired,
+  activeUrl: PropTypes.string.isRequired,
+  allWords:PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  getNextUrl: PropTypes.func.isRequired,
+  getNextWord: PropTypes.func.isRequired
+
+}
 
 export default Player
