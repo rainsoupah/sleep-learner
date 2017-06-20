@@ -13,8 +13,8 @@ export function addWordTo(know, id, sliceIdx) {
   }
 }
 
-export function incrementIdx(activeIdx) {
-  return { type: "INCREMENT_PLAYER_INDEX", updatedIdx: activeIdx+1 }
+export function incrementIdx() {
+  return { type: "INCREMENT_PLAYER_INDEX" }
 }
 
 // should get words based on user

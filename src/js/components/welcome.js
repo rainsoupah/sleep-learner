@@ -13,9 +13,11 @@ const Welcome = ({getWords}) => (
       <li> connect with player, reading definitions</li>
       <li> issue with react router conflicts flask: see catch-all routing</li>
       <li> UI: display stats dashboard</li>
-      <li> Set time out: automatically display unknown words at "player"</li>
     </ul>
 
+    <ul> Optional
+      <li> During Player, sometimes server error when fetching voices with google API, best to save all voices in db</li>
+    </ul>
     <button>
       <Link to="/dashboard" onClick={() => getWords("userId")}>
         Loggin

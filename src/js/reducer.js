@@ -12,10 +12,10 @@ function user(state, action) {
 function player(state={}, action) {
   switch (action.type) {
     case "FETCH_VOICE_SUCCESS":
-      return {...state, audio_url: action.payload,}
+      return {...state, audio_url: action.payload}
       break;
     case "INCREMENT_PLAYER_INDEX" :
-      return {...state, activeIdx: action.updatedIdx}
+      return {...state, activeIdx: state.activeIdx+1}
     default:
       return state
   }

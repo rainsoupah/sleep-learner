@@ -18,11 +18,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getUrl: (textData) => {
+    getNextUrl: (textData) => {
       dispatch(fetchVoice(textData))
     },
-    getNextWord: (activeIdx) => {
-      dispatch(incrementIdx(activeIdx))
+    getNextWord: () => {
+      dispatch(incrementIdx())
     }
   }
 }
