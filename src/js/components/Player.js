@@ -58,12 +58,20 @@ var Player = React.createClass ({
     })
   },
 
+  playNext() {
+    setTimeout(function() {
+      this.props.getNextUrl(this.combineWordDefin());
+      this.props.getNextWord(); // display next word
+    }, 5000)
+  },
+
   render(){
     return (
       <div>
         {this.props.activeWord.word} , {this.props.activeWord.defin}
         <button onClick={this.playWord}>PLAY</button>
-        <Audio src={this.props.activeUrl} autoPlay uniqueId='example' controls loop />
+        <Audio src={this.props.activeUrl} autoPlay uniqueId='example' controls />
+        {this.playNext()}
       </div>
     )
   }

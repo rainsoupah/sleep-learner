@@ -1,5 +1,6 @@
 // additional installations:
 // npm install --save react-router@2.8.1
+// npm install redux-audio
 
 // webpack see effects:
 // ./node_modules/.bin/webpack --config webpack.config.js
