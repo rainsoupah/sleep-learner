@@ -1,6 +1,6 @@
 // import { VisibilityFilters } from './actions'
 import {combineReducers} from 'redux'
-import { audioReducer as audio } from 'redux-audio'
+// import { audioReducer as audio } from 'redux-audio'
 
 // REDUCERS
 
@@ -17,6 +17,8 @@ function player(state={}, action) {
       break;
     case "INCREMENT_PLAYER_INDEX" :
       return {...state, activeIdx: state.activeIdx+1}
+    case "TOGGLE_PLAY_PAUSE":
+      return {...state, playing: !state.playing}
     default:
       return state
   }
@@ -91,8 +93,7 @@ const sleepLearn = combineReducers(
     knows,
     words,
     api,
-    player,
-    audio
+    player
   }
 )
 

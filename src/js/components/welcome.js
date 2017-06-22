@@ -17,7 +17,7 @@ const Welcome = ({getWords}) => (
     </ul>
 
     <ul> Optional
-      <li> During Player, sometimes server error when fetching voices with google API, best to save all voices in db</li>
+      <li> </li>
     </ul>
     <button>
       <Link to="/dashboard" onClick={() => getWords("userId")}>

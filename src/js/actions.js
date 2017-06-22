@@ -17,6 +17,10 @@ export function incrementIdx() {
   return { type: "INCREMENT_PLAYER_INDEX" }
 }
 
+export function togglePlay() {
+  return {type: "TOGGLE_PLAY_PAUSE"}
+}
+
 // should get words based on user
 export function fetchWords(user) {
   return function (dispatch) {

@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react'
-import { Audio } from 'redux-audio'
+import Sound from 'react-sound'
 
 // to pass functions: must add {} around prop
 
@@ -11,10 +11,25 @@ import { Audio } from 'redux-audio'
 //   })
 // }
 
+var Controls = React.createClass({
+	render() {
+    let name;
+    if (this.props.isPlaying == Sound.status.PLAYING) {
+      name = 'fa fa-fw fa-pause'
+    } else {
+      name = 'fa fa-fw fa-play'
+    }
+		return (
+			<button onClick={() => this.props.toggleButton()}> {name} </button>
+		)
+	}
+});
+
 var Player = React.createClass ({
   componentDidMount: function() {
       this.props.getNextUrl(this.combineWordDefin(true)); // dont "bind", call function NOT event handler
       // console.log(this.props.activeUrl); // not updated, getUrl action has not completed
+      // document.document.getElementsByTagName("Audio").addEventListener('ended', this.getNextTrack());
   },
 
   // componentWillUpdate(nextProps, nextState) {
@@ -32,46 +47,28 @@ var Player = React.createClass ({
     return allWords[idx].word + '.' + allWords[idx].defin;
   },
 
-  playWord() {
-    const self = this
-    var sound = new Audio(this.props.activeUrl)
+  getNextTrack() {
+    const _this = this;
 
-    sound.addEventListener('loadedmetadata', function(){
-      sound.play()
-
-      if (self.props.activeIdx < self.props.allWords.length - 1) {
-        // self.props.getNextWord(self.props.activeIdx);
-        // console.log("getNextWord completed");
-        self.props.getNextUrl(self.combineWordDefin());
-
-        setTimeout(function() {
-
-            // self.props.toggleRenderComp();
-            // console.log("update component");
-            self.props.getNextWord(); // display next word
-            self.playWord(); // recurse: play next word
-
-          }, sound.duration * 1000 + 1500)
-      } else {
-        console.log("end of words");
-      }
-    })
-  },
-
-  playNext() {
-    setTimeout(function() {
+    if (this.props.activeIdx < this.props.allWords.length-1) {
       this.props.getNextUrl(this.combineWordDefin());
-      this.props.getNextWord(); // display next word
-    }, 5000)
+      setTimeout(function() {
+        _this.props.getNextWord(); // display next word
+      }, 750)
+    } else {
+      console.log("end of words");
+    }
   },
+
+
 
   render(){
     return (
       <div>
         {this.props.activeWord.word} , {this.props.activeWord.defin}
-        <button onClick={this.playWord}>PLAY</button>
-        <Audio src={this.props.activeUrl} autoPlay uniqueId='example' controls />
-        {this.playNext()}
+        <Controls isPlaying={this.props.playStatus} toggleButton={this.props.updateStatus}/>
+        <Sound url={this.props.activeUrl} playStatus={this.props.playStatus} onFinishedPlaying={this.getNextTrack} />
+
       </div>
     )
   }
@@ -90,3 +87,47 @@ Player.propTypes = {
 }
 
 export default Player
+
+// playWord() {
+//   const self = this
+//   var sound = new Audio(this.props.activeUrl)
+//
+//   sound.addEventListener('loadedmetadata', function(){
+//       sound.play()
+//
+//       if (self.props.activeIdx < self.props.allWords.length - 1) {
+//         // self.props.getNextWord(self.props.activeIdx);
+//         // console.log("getNextWord completed");
+//         self.props.getNextUrl(self.combineWordDefin());
+//
+//         setTimeout(function() {
+//
+//             // self.props.toggleRenderComp();
+//             // console.log("update component");
+//             self.props.getNextWord(); // display next word
+//             self.playWord(); // recurse: play next word
+//
+//           }, sound.duration * 1000 + 1500)
+//       } else {
+//         console.log("end of words");
+//       }
+//     })
+//
+// },
+
+// toggleButton() {
+//   // let status = this.props.playStatus
+//   // var audio = new Audio(this.props.activeUrl)
+//   // // audio.controls = true
+//   // // audio.load()
+//   // // console.log(audio);
+//   //
+//   // if(status === 'play') {
+//   //
+//   //   audio.play()
+//   // } else {
+//   //   console.log("togglePlay called: audio will be played")
+//   //   audio.pause()
+//   // }
+//   this.props.updateStatus();
+// },
