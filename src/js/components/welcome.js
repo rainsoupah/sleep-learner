@@ -2,9 +2,12 @@ import React, {PropTypes} from 'react'
 // import Dashboard from './dashboard'
 import { Link } from 'react-router'
 
+
+
 // to pass functions: must add {} around prop
 
 const Welcome = ({getWords}) => (
+
   <div>
     Welcome to Sleep Learner: loggin here
     <ul> To Dos
@@ -17,7 +20,7 @@ const Welcome = ({getWords}) => (
     </ul>
 
     <ul> Optional
-      <li> </li>
+      <li> set time out: inaccuracy aligning words with sound play (Player.js)</li>
     </ul>
     <button>
       <Link to="/dashboard" onClick={() => getWords("userId")}>
@@ -25,6 +28,7 @@ const Welcome = ({getWords}) => (
       </Link>
     </button>
   </div>
+  
 )
 
 Welcome.propTypes = {

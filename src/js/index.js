@@ -2,9 +2,18 @@ import React from 'react'
 import { render } from 'react-dom'
 import store from './store'
 import App from './components/app.js'
+//UI
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+// Needed for onTouchTap property
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin()
+
 
 render(
-  <App store={store}/> ,
+  (<MuiThemeProvider>
+    <App store={store}/>
+  </MuiThemeProvider>),
+
   document.getElementById('app')
 )
 

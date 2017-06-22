@@ -1,5 +1,7 @@
 import React, {PropTypes} from 'react'
 import Sound from 'react-sound'
+import PlayCircleOutline from 'material-ui/svg-icons/av/play-circle-outline';
+import IconButton from 'material-ui/IconButton';
 
 // to pass functions: must add {} around prop
 
@@ -13,14 +15,14 @@ import Sound from 'react-sound'
 
 var Controls = React.createClass({
 	render() {
-    let name;
+    let type;
     if (this.props.isPlaying == Sound.status.PLAYING) {
-      name = 'fa fa-fw fa-pause'
+      type = <PlayCircleOutline color="black" />
     } else {
-      name = 'fa fa-fw fa-play'
+      type = <PlayCircleOutline color="black" />
     }
 		return (
-			<button onClick={() => this.props.toggleButton()}> {name} </button>
+      <IconButton onTouchTap={()=>this.props.toggleButton()}>{type}</IconButton>
 		)
 	}
 });
@@ -32,9 +34,9 @@ var Player = React.createClass ({
       // document.document.getElementsByTagName("Audio").addEventListener('ended', this.getNextTrack());
   },
 
-  // componentWillUpdate(nextProps, nextState) {
-  //     console.log('Component WILL UPDATE!');
-  //  },
+  componentWillUpdate(nextProps, nextState) {
+      console.log('Component WILL UPDATE!');
+   },
 
   // shouldComponentUpdate: function(nextProps, nextState) {
   //   console.log(nextProps.updateComp);
@@ -61,14 +63,28 @@ var Player = React.createClass ({
   },
 
 
+  stop() {
 
+  },
+
+  forward() {
+
+  },
+
+  backward() {
+
+  },
   render(){
     return (
       <div>
         {this.props.activeWord.word} , {this.props.activeWord.defin}
-        <Controls isPlaying={this.props.playStatus} toggleButton={this.props.updateStatus}/>
+        <Controls isPlaying={this.props.playStatus}
+                  toggleButton={this.props.updateStatus}
+                  stop={this.stop}
+                  forward={this.forward}
+                  backward={this.backward}
+                  />
         <Sound url={this.props.activeUrl} playStatus={this.props.playStatus} onFinishedPlaying={this.getNextTrack} />
-
       </div>
     )
   }
