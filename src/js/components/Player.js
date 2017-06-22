@@ -1,7 +1,10 @@
 import React, {PropTypes} from 'react'
 import Sound from 'react-sound'
-import PlayCircleOutline from 'material-ui/svg-icons/av/play-circle-outline';
-import IconButton from 'material-ui/IconButton';
+
+// UI ------------------------------------------------------------------------
+import PlayCircleOutline from 'material-ui/svg-icons/av/play-circle-outline'
+import PauseCircleOutline from 'material-ui/svg-icons/av/pause-circle-outline'
+import IconButton from 'material-ui/IconButton'
 
 // to pass functions: must add {} around prop
 
@@ -16,13 +19,21 @@ import IconButton from 'material-ui/IconButton';
 var Controls = React.createClass({
 	render() {
     let type;
+    let nextStatus;
     if (this.props.isPlaying == Sound.status.PLAYING) {
       type = <PlayCircleOutline color="black" />
+      nextStatus = 1 //paused
     } else {
-      type = <PlayCircleOutline color="black" />
+      type = <PauseCircleOutline color="black" />
+      nextStatus = 0 //playing
     }
+    const stop = <PauseCircleOutline color="black" />
 		return (
-      <IconButton onTouchTap={()=>this.props.toggleButton()}>{type}</IconButton>
+      <div>
+        <IconButton onTouchTap={()=>this.props.toggleButton(nextStatus)}>{type}</IconButton>
+        <IconButton onTouchTap={()=>this.props.toggleButton(2)}>{stop}</IconButton>
+      </div>
+
 		)
 	}
 });

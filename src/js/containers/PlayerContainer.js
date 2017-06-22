@@ -8,13 +8,29 @@ const getAllWords = (words, idx) => {
   return unknownWords
 }
 
+const getPlayStatus = (playing) => {
+  switch (playing) {
+    case 0:
+      return Sound.status.PLAYING
+      break;
+    case 1:
+      return Sound.status.PAUSED
+      break;
+    case 2:
+      return Sound.status.STOPPED
+      break;
+    default:
+      return Sound.status.STOPPED
+  }
+}
+
 const mapStateToProps = (state) => {
   return {
     activeWord: getAllWords(state.words, state.wordIdx)[state.player.activeIdx],
     activeIdx: state.player.activeIdx,
     activeUrl: state.player.audio_url,
     allWords: getAllWords(state.words, state.wordIdx),
-    playStatus: state.player.playing ? Sound.status.PAUSED: Sound.status.PLAYING
+    playStatus: getPlayStatus(state.player.playing)
   }
 }
 
@@ -26,8 +42,8 @@ const mapDispatchToProps = (dispatch) => {
     getNextWord: () => {
       dispatch(incrementIdx())
     },
-    updateStatus: () => {
-      dispatch(togglePlay())
+    updateStatus: (nextStatus) => {
+      dispatch(togglePlay(nextStatus))
     },
   }
 }

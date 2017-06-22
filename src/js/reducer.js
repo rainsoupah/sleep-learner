@@ -18,7 +18,7 @@ function player(state={}, action) {
     case "INCREMENT_PLAYER_INDEX" :
       return {...state, activeIdx: state.activeIdx+1}
     case "TOGGLE_PLAY_PAUSE":
-      return {...state, playing: !state.playing}
+      return {...state, playing: action.nextStatus}
     default:
       return state
   }

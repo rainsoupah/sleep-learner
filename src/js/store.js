@@ -25,7 +25,7 @@ const initialState = {
     error: null
   },
   player: {
-    playing: false,
+    playing: 0,
     activeIdx: 0,
     audio_url: ""
   }
