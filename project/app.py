@@ -11,10 +11,14 @@ app.register_blueprint(quiz_app)
 # app.register_blueprint(registration)
 
 
-@app.route('/')
-def hello():
-  return render_template('index.html')
+# @app.route('/')
+# def hello():
+#   return render_template('index.html')
 
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def catch_all(path):
+    return render_template('index.html')
 
 if __name__ == '__main__':
   app.run(debug=True)
