@@ -14,7 +14,7 @@ https://github.com/realpython/ultimate-flask-front-end
 6. npm install --save-dev babel-cli babel-preset-react
 
 ## Running
-1. make dev
+1. python project/app.py
 2. Go to localhost:5000
 
 ## Resources
