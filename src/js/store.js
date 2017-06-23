@@ -27,7 +27,13 @@ const initialState = {
   player: {
     playing: 0,
     activeIdx: 0,
-    audio_url: ""
+    audio_url: "",
+    progress: {
+      elapsed:'00:00',
+      total:'00:00',
+      position: 0
+    },
+    playfromposn:0
   }
 }
 

@@ -19,6 +19,22 @@ function player(state={}, action) {
       return {...state, activeIdx: state.activeIdx+1}
     case "TOGGLE_PLAY_PAUSE":
       return {...state, playing: action.nextStatus}
+    case "HANDLE_PROGRESS_CHANGE":
+      return {
+        ...state,
+        progress: {
+          ...state.progress,
+          elapsed: action.elapsed,
+          total: action.total,
+          position: action.position
+        }
+      }
+    case "CHANGE_POSITION":
+      return {
+        ...state,
+        playfromposn: state.playfromposn+action.distance
+      }
+      break;
     default:
       return state
   }

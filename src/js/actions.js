@@ -21,6 +21,22 @@ export function togglePlay(nextStatus) {
   return {type: "TOGGLE_PLAY_PAUSE", nextStatus}
 }
 
+export function handleProgress(elapsed, total, position) {
+  return {type: "HANDLE_PROGRESS_CHANGE", elapsed, total, position}
+}
+
+export function changePosition(direction) {
+  var distance;
+  if (direction === "forward") {
+    distance = 1000*10
+  } else if (direction === "backward") {
+    distance = -1000*10
+  } else {
+    console.log("action.js: invalid changePosition");
+  }
+
+  return { type: "CHANGE_POSITION", distance}
+}
 // should get words based on user
 export function fetchWords(user) {
   return function (dispatch) {

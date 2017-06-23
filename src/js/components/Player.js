@@ -1,9 +1,13 @@
 import React, {PropTypes} from 'react'
 import Sound from 'react-sound'
+import LinearProgress from 'material-ui/LinearProgress';
 
 // UI ------------------------------------------------------------------------
 import PlayCircleOutline from 'material-ui/svg-icons/av/play-circle-outline'
 import PauseCircleOutline from 'material-ui/svg-icons/av/pause-circle-outline'
+import Stop from 'material-ui/svg-icons/av/stop'
+import FastForward from 'material-ui/svg-icons/av/fast-forward'
+import FastRewind from 'material-ui/svg-icons/av/fast-rewind'
 import IconButton from 'material-ui/IconButton'
 
 // to pass functions: must add {} around prop
@@ -21,17 +25,34 @@ var Controls = React.createClass({
     let type;
     let nextStatus;
     if (this.props.isPlaying == Sound.status.PLAYING) {
-      type = <PlayCircleOutline color="black" />
+      type = <PauseCircleOutline color="black" />
       nextStatus = 1 //paused
     } else {
-      type = <PauseCircleOutline color="black" />
+      type = <PlayCircleOutline color="black" />
       nextStatus = 0 //playing
     }
-    const stop = <PauseCircleOutline color="black" />
+    const stop = <Stop color="black" />
+    const ff = <FastForward color="black"/>
+    const fr = <FastRewind color="black"/>
+
 		return (
       <div>
         <IconButton onTouchTap={()=>this.props.toggleButton(nextStatus)}>{type}</IconButton>
         <IconButton onTouchTap={()=>this.props.toggleButton(2)}>{stop}</IconButton>
+        <IconButton onTouchTap={()=>this.props.forward()}>{ff}</IconButton>
+        <IconButton onTouchTap={()=>this.props.backward()}>{fr}</IconButton>
+      </div>
+
+		)
+	}
+});
+
+var Progress = React.createClass({
+	render() {
+
+		return (
+      <div>
+        <LinearProgress mode="determinate" value={this.props.position} max={1} />
       </div>
 
 		)
@@ -73,29 +94,45 @@ var Player = React.createClass ({
     }
   },
 
-
-  stop() {
-
+  handlePlaying(audio) {
+    var elapsed, position, total;
+    elapsed = this.formatMilliseconds(audio.position)
+    total = this.formatMilliseconds(audio.duration)
+    position = audio.position / audio.duration
+    this.props.handleProgress(elapsed, total, position)
   },
 
-  forward() {
 
+  formatMilliseconds(milliseconds) {
+     var hours = Math.floor(milliseconds / 3600000);
+     milliseconds = milliseconds % 3600000;
+     var minutes = Math.floor(milliseconds / 60000);
+     milliseconds = milliseconds % 60000;
+     var seconds = Math.floor(milliseconds / 1000);
+     milliseconds = Math.floor(milliseconds % 1000);
+
+     return (minutes < 10 ? '0' : '') + minutes + ':' +
+        (seconds < 10 ? '0' : '') + seconds;
   },
 
-  backward() {
-
-  },
   render(){
     return (
       <div>
         {this.props.activeWord.word} , {this.props.activeWord.defin}
         <Controls isPlaying={this.props.playStatus}
                   toggleButton={this.props.updateStatus}
-                  stop={this.stop}
-                  forward={this.forward}
-                  backward={this.backward}
+                  forward={this.props.forward}
+                  backward={this.props.backward}
                   />
-        <Sound url={this.props.activeUrl} playStatus={this.props.playStatus} onFinishedPlaying={this.getNextTrack} />
+        <Sound url={this.props.activeUrl}
+              playStatus={this.props.playStatus}
+              onPlaying={this.handlePlaying}
+              playFromPosition={this.props.playFromPosn}
+              onFinishedPlaying={this.getNextTrack} />
+        <Progress
+            elapsed={this.props.progress.elapsed}
+            total={this.props.progress.total}
+            position={this.props.progress.position}/>
       </div>
     )
   }
