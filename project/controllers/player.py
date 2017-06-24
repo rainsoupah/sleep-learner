@@ -4,7 +4,7 @@ from flask import send_file
 from flask import request
 from flask import jsonify
 
-from util.database import get_db_connection
+# from util.database import get_db_connection
 from util.tts import TTS
 from util.tts import TMP_DIR
 

@@ -42,7 +42,7 @@ export function fetchWords(user) {
   return function (dispatch) {
 
     dispatch({ type: "FETCH_WORDS_START" }) // dispatch action
-    return axios.get("/api/words/c")
+    return axios.get("/api/words")
         .then((response) => {
           // console.log(response)
           dispatch({type: "FETCH_WORDS_SUCCESS", payload: response.data.results})
