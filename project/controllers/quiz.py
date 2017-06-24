@@ -28,25 +28,7 @@ def get_words():
         # return json.dumps(wordlist)
         return jsonify(results=wordlist)
 
-# def get_words(alphabet):
-#       db = get_db_connection()
-#       wordlist = []
-#       toMatch = alphabet + '%'
-#       #sqlalchemy join?
-#       for idx, word, type, defin in db.execute(
-#         ''' SELECT D.id, D.word, D.type, D.definition
-#             FROM dictionary_entry D LEFT JOIN user_response R
-#             ON D.id=R.word_id
-#             WHERE R.word_id IS NULL AND D.word LIKE ?
-#         ''', (toMatch,)
-#       ):
-#         wordlist.append({
-#                   'idx':idx,
-#                   'word':word,
-#                   'type':type,
-#                   'defin':defin,
-#         })
-#       return jsonify(results=wordlist)
+
 
 
 
@@ -76,16 +58,23 @@ def quiz_reply():
 
   return request.data
 
-
-# other
-    # print request.data
-    # knowledge = data['know']
-    # word = data['word']
-  # with conn:
-  #   cur = conn.cursor()
-  #   cur.execute(
-  #     '''   INSERT INTO user_response (user_id, word_id)
-  #           VALUES (?,? )
-  #     ''', (user, word)
-  #   )
-  # conn.commit()
+# direct sqlite commands:
+# def get_words(alphabet):
+#       db = get_db_connection()
+#       wordlist = []
+#       toMatch = alphabet + '%'
+#       #sqlalchemy join?
+#       for idx, word, type, defin in db.execute(
+#         ''' SELECT D.id, D.word, D.type, D.definition
+#             FROM dictionary_entry D LEFT JOIN user_response R
+#             ON D.id=R.word_id
+#             WHERE R.word_id IS NULL AND D.word LIKE ?
+#         ''', (toMatch,)
+#       ):
+#         wordlist.append({
+#                   'idx':idx,
+#                   'word':word,
+#                   'type':type,
+#                   'defin':defin,
+#         })
+#       return jsonify(results=wordlist)

@@ -9,6 +9,7 @@ import { Link } from 'react-router'
 const Welcome = ({getWords}) => (
 
   <div>
+
     Welcome to Sleep Learner: loggin here
     <ul> To Dos
       <li> Implement a timer while "quiz" is running </li>
@@ -28,7 +29,7 @@ const Welcome = ({getWords}) => (
       </Link>
     </button>
   </div>
-  
+
 )
 
 Welcome.propTypes = {

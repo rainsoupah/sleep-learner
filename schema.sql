@@ -6,10 +6,10 @@ CREATE TABLE IF NOT EXISTS dictionary_entry (
 );
 
 CREATE TABLE IF NOT EXISTS users (
-  id            INTEGER PRIMARY KEY AUTOINCREMENT,
-  name          TEXT    NOT NULL,
-  email         TEXT    NOT NULL,
-  password      VARCHAR NOT NULL
+  id            INTEGER   PRIMARY KEY AUTOINCREMENT,
+  social_id     VARCHAR   UNIQUE NOT NULL,
+  nickname      VARCHAR   NOT NULL,
+  email         VARCHAR
 );
 
 CREATE TABLE IF NOT EXISTS user_response (

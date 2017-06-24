@@ -4,6 +4,7 @@ import store from './store'
 import App from './components/app.js'
 //UI
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+
 // Needed for onTouchTap property
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin()

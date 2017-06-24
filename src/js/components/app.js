@@ -9,6 +9,7 @@ import Dashboard from './dashboard'
 import FlashCard from '../containers/FlashCard'
 import PlayerSummary from './PlayerSummary'
 import PlayerContainer from '../containers/PlayerContainer'
+import AppBar from 'material-ui/AppBar'
 
 // import AppContainer from '../containers/AppContainer'
 
@@ -18,13 +19,17 @@ import PlayerContainer from '../containers/PlayerContainer'
 //  To pass props to react router: <Route path="/" component={App} appName="test app">, then this.props.route.appName
 const App = ({ store }) => (
   <Provider store={store}>
-    <Router history={browserHistory}>
-        <Route path="/" component={WelcomeContainer}/>
-        <Route path="/dashboard" component={Dashboard}/>
-        <Route path="/quiz" component={FlashCard}/>
-        <Route path="/playerSummary" component={PlayerSummary}/>
-        <Route path="/player" component={PlayerContainer}/>
-    </Router>
+    <div>
+      <AppBar title="Sleep Learner"/>
+      <Router history={browserHistory}>
+          <Route path="/" component={WelcomeContainer}/>
+          <Route path="/dashboard" component={Dashboard}/>
+          <Route path="/quiz" component={FlashCard}/>
+          <Route path="/playerSummary" component={PlayerSummary}/>
+          <Route path="/player" component={PlayerContainer}/>
+      </Router>
+    </div>
+
   </Provider>
 )
 

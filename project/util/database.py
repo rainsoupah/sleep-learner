@@ -5,6 +5,7 @@
 # from app import db
 
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
 
 db = SQLAlchemy()
 
@@ -16,7 +17,7 @@ class Dictionary(db.Model):
     definition = db.Column(db.String, nullable=False)
 
 #interacts with oauth
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     social_id = db.Column(db.String(64), nullable=False, unique=True)
