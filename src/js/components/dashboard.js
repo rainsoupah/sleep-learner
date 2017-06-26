@@ -37,12 +37,6 @@ const mapDispatchToProps = (dispatch) => {
     _initData: () => {
       dispatch(signInAndGetWords())
     }
-    // signIn: () => {
-    //   dispatch(signIn())
-    // },
-    // fetchWords: (activeUser) => {
-    //   dispatch(fetchWords(activeUser))
-    // }
   }
 }
 
@@ -50,15 +44,5 @@ const Dashboard = connect(
   mapStateToProps,
   mapDispatchToProps
 )(DashboardPres)
-// const Dashboard = () => (
-//   <div>
-//     My Dahsboard Component
-//     <button> <Link to="/quiz"> Enter quiz mode</Link></button>
-//   </div>
-// )
-
-// Dashboard.propTypes = {
-//   buttonClick: PropTypes.func.isRequired
-// }
 
 export default Dashboard

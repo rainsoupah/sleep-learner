@@ -30,7 +30,7 @@ class AppHeaderPres extends React.Component {
   }
   render() {
     return(
-      <AppBar title="SleepLearner"
+      <AppBar title={this.props.title}
               iconElementRight={this.props.isLoggedIn? <LogOut activeUser={this.props.activeUser}/> : <LogIn />}
               iconElementLeft={null}
       />
@@ -41,7 +41,8 @@ class AppHeaderPres extends React.Component {
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.user.isLoggedIn,
-    activeUser: state.user.username
+    activeUser: state.user.username,
+    title: state.appBar.title
   }
 }
 
