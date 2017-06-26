@@ -1,21 +1,52 @@
 import React, {PropTypes} from 'react'
 import { Link } from 'react-router'
 import {connect} from 'react-redux'
+import {Card, CardHeader, CardText} from 'material-ui/Card'
 // import relevant actions if passing actions as props
 
 
 // to pass functions: must add {} around prop
+const styles = {
+  card: {
+    text: {
+      padding: '0px 16px 0px 16px'
+    }
+  }
+};
 
 /******PRESENTATIONAL COMPONENT*****************/
-const PlayerSummaryPres = ({unknownWords}) => (
+const noWords = () => (
   <div>
-    List of words marked as unknownWords, caching problem: each time refresh page, states are lost
-    <ul>
+    No Words to be learnt
+  </div>
+)
+
+const hasWords = () => (
+  <div>
+    <FlatButton href="/player">
+      <Link to="/player">
+        Enter Sleep Learn Chamber
+      </Link>
+    </FlatButton>
+  </div>
+)
+
+const PlayerSummaryPres = ({unknownWords}) => (
+
+  <div>
+      {unknownWords.length == 0 ? noWords : hasWords}
       {unknownWords.map((wordSet, i) => (
-        <li key={i}> {wordSet.word} , {wordSet.defin}</li>
+        <Card key={i}>
+          <CardHeader
+            title={wordSet.word}
+            actAsExpander={true}
+            showExpandableButton={true}
+          />
+          <CardText expandable={true} style={styles.card.text}>
+             {wordSet.defin}
+          </CardText>
+        </Card>
       ))}
-    </ul>
-    <button> <Link to="/player"> Enter player mode</Link></button>
   </div>
 )
 

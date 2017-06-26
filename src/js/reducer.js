@@ -5,6 +5,11 @@ import {combineReducers} from 'redux'
 // REDUCERS
 
 // handle edge cases
+function appBar(state={}, action) {
+  return {
+    title: "defualt title"
+  }
+}
 
 function user(state={}, action) {
   switch (action.type) {
@@ -117,6 +122,7 @@ function api(state={}, action) {
 // COMBINE REDUCERS
 const sleepLearn = combineReducers(
   {
+    appBar,
     user,
     wordIdx,
     alphaFilter,

@@ -3,6 +3,14 @@ import { Link } from 'react-router'
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
 import FlatButton from 'material-ui/FlatButton'
 
+const styles = {
+  card: {
+    text: {
+      padding: '0px 16px 0px 16px'
+    }
+  }
+};
+
 const CardPres = ({ activeWord, activeIdx, knownWords, user, onNextClick, onSummarize }) => (
   <Card>
     <CardHeader
@@ -11,13 +19,17 @@ const CardPres = ({ activeWord, activeIdx, knownWords, user, onNextClick, onSumm
       actAsExpander={true}
       showExpandableButton={true}
     />
-    <CardText expandable={true}>
-      {activeWord.defin}
+    <CardText expandable={true} style={styles.card.text}>
+      Definition: {activeWord.defin}
     </CardText>
     <CardActions>
       <FlatButton label="I know" onTouchTap={() => onNextClick(true, activeWord.idx, activeIdx)}/>
       <FlatButton label="Don't Know" onTouchTap={() => onNextClick(false)}/>
-      <FlatButton label="Proceed to Sleep Learn" onTouchTap={() => onSummarize(user.userid, knownWords)}/>
+      <FlatButton onTouchTap={() => onSummarize(user.userid, knownWords)}>
+        <Link to="/playerSummary">
+          Proceed to Quiz Summary
+        </Link>
+      </FlatButton>
     </CardActions>
   </Card>
 )

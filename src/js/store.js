@@ -14,6 +14,9 @@ import words from './data/words'
 // knows: list of words newly marked as "known" not synced with db yet
 // ideally put this in store.js
 const initialState = {
+  appBar: {
+    title: "default title"
+  },
   user: {
     userid: 0,
     username: "",
