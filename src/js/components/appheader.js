@@ -13,7 +13,12 @@ const LogIn = ({signIn}) => (
 
 //add onClick event
 const LogOut = ({activeUser}) => (
-  <FlatButton>Hello {activeUser}</FlatButton>
+  <div>
+    <div> { activeUser } </div>
+    <FlatButton>
+      <a href='/logout'> Logout </a>
+    </FlatButton>
+  </div>
 )
 
 const AppHeaderPres = ( {isLoggedIn, activeUser} ) => (

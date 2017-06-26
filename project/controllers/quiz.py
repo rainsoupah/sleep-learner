@@ -36,7 +36,7 @@ def get_words():
                 # 'response': entry.Response.word_id
             })
         # return json.dumps(wordlist)
-        print len(wordlist)
+        # print len(wordlist)
         return jsonify(results=wordlist)
 
 # POST data

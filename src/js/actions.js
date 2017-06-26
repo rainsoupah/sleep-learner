@@ -104,6 +104,15 @@ export function signIn() {
   }
 }
 
+export function signInAndGetWords() {
+  return function(dispatch, getState) {
+    return dispatch(signIn()).then(() => {
+      const userid = getState().user.userid
+      return dispatch(fetchWords(userid))
+    })
+  }
+}
+
 export function signOut() {
   dispatch({type: "USER_SIGN_OUT" })
 }
