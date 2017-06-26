@@ -13,7 +13,7 @@ const Card = ({ activeWord, activeIdx, knownWords, user, onNextClick, onSummariz
     <button onClick={() => onNextClick(true, activeWord.idx, activeIdx)}> I Know </button>
     <button onClick={() => onNextClick(false)}> I dont Know </button>
 
-    <button onClick={() => onSummarize(user, knownWords)}>
+    <button onClick={() => onSummarize(user.userid, knownWords)}>
       <Link to="/playerSummary"> Enough, player summary</Link>
     </button>
 
@@ -23,7 +23,7 @@ const Card = ({ activeWord, activeIdx, knownWords, user, onNextClick, onSummariz
 Card.propTypes = {
   activeWord: PropTypes.object.isRequired,
   knownWords: PropTypes.arrayOf(PropTypes.number).isRequired,
-  user: PropTypes.number.isRequired,
+  user: PropTypes.object.isRequired,
   onNextClick: PropTypes.func.isRequired,
   onSummarize: PropTypes.func.isRequired
 }

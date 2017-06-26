@@ -6,8 +6,22 @@ import {combineReducers} from 'redux'
 
 // handle edge cases
 
-function user(state, action) {
-  return 0
+function user(state={}, action) {
+  switch (action.type) {
+    case "GET_USER_SUCCESS":
+      return {
+        ...state,
+        userid: action.id,
+        username: action.name,
+        isLoggedIn: true
+      }
+      break;
+    // case "SIGN_OUT_SUCCESS":
+    //
+    //   break;
+    default:
+      return state
+  }
 }
 
 function player(state={}, action) {

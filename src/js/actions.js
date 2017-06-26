@@ -42,14 +42,19 @@ export function fetchWords(user) {
   return function (dispatch) {
 
     dispatch({ type: "FETCH_WORDS_START" }) // dispatch action
-    return axios.get("/api/words")
-        .then((response) => {
-          // console.log(response)
-          dispatch({type: "FETCH_WORDS_SUCCESS", payload: response.data.results})
-        })
-        .catch((err) => {
-          dispatch({type:"FETCH_WORDS_FAIL", payload: err})
-        })
+    
+    return axios.get("/api/words/", {
+      params: {
+        userId: user
+      }
+    })
+    .then((response) => {
+      // console.log(response)
+      dispatch({type: "FETCH_WORDS_SUCCESS", payload: response.data.results})
+    })
+    .catch((err) => {
+      dispatch({type:"FETCH_WORDS_FAIL", payload: err})
+    })
   }
 }
 
@@ -84,6 +89,23 @@ export function replyWords(user, knownWords) {
     console.log(error);
   });
   }
+}
+
+export function signIn() {
+  return function (dispatch) {
+    dispatch({ type: "GET_USER" })
+    return axios.get('/api/getUser')
+      .then((response) => {
+        dispatch({type: "GET_USER_SUCCESS", id: response.data.userid, name: response.data.username})
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+}
+
+export function signOut() {
+  dispatch({type: "USER_SIGN_OUT" })
 }
 
 

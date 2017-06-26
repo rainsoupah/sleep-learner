@@ -20,11 +20,18 @@ class OAuthSignIn(object):
         pass
 
     def get_callback_url(self):
-        return url_for('registration.oauth_callback', provider=self.provider_name,
+        print "callback_url"
+        response = url_for('registration.oauth_callback', provider=self.provider_name,
                        _external=True)
+        # print "callback before return"
+        # response.headers.add('Access-Control-Allow-Origin', '*')
+        return response
+        # return url_for('registration.oauth_callback', provider=self.provider_name,
+        #                _external=True)
 
     @classmethod
     def get_provider(self, provider_name):
+        print "oauth.get_provider"
         if self.providers is None:
             self.providers = {}
             for provider_class in self.__subclasses__():
@@ -36,6 +43,7 @@ class OAuthSignIn(object):
 class FacebookSignIn(OAuthSignIn):
     def __init__(self):
         super(FacebookSignIn, self).__init__('facebook')
+
         self.service = OAuth2Service(
             name='facebook',
             client_id=self.consumer_id,
@@ -44,8 +52,15 @@ class FacebookSignIn(OAuthSignIn):
             access_token_url='https://graph.facebook.com/oauth/access_token',
             base_url='https://graph.facebook.com/'
         )
+        print "initiate service"
 
     def authorize(self):
+        print "authorize"
+        # return self.service.get_authorize_url(
+        #     scope='email',
+        #     response_type='code',
+        #     redirect_uri=self.get_callback_url())
+
         return redirect(self.service.get_authorize_url(
             scope='email',
             response_type='code',
@@ -53,6 +68,7 @@ class FacebookSignIn(OAuthSignIn):
         )
 
     def callback(self):
+        print "oauth.callback"
         def decode_json(payload):
             return json.loads(payload.decode('utf-8'))
 

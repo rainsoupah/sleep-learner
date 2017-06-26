@@ -14,7 +14,11 @@ import words from './data/words'
 // knows: list of words newly marked as "known" not synced with db yet
 // ideally put this in store.js
 const initialState = {
-  user: 0,
+  user: {
+    userid: 0,
+    username: "",
+    isLoggedIn: false
+  },
   wordIdx: 0,
   alphaFilter: "A",
   knows,

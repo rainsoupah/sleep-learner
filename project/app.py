@@ -1,5 +1,6 @@
 from flask import Flask
 from flask import render_template
+from flask_cors import CORS, cross_origin
 
 from controllers.player import player_app
 from controllers.quiz import quiz_app
@@ -27,6 +28,7 @@ def create_app():
     }
     db.init_app(app)
     lm.init_app(app)
+    cors = CORS(app, resources={r"/authorize/*": {"origins": "*"}})
     app.register_blueprint(player_app)
     app.register_blueprint(quiz_app)
     app.register_blueprint(registration)

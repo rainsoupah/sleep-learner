@@ -21,6 +21,12 @@ def load_user(id):
 def index():
     return render_template('loggin.html')
 
+@registration.route('/api/getUser')
+def get_user():
+    return jsonify({
+        'username': current_user.nickname,
+        'userid': current_user.id
+    })
 
 @registration.route('/logout')
 def logout():
@@ -30,25 +36,29 @@ def logout():
 
 @registration.route('/authorize/<provider>')
 def oauth_authorize(provider):
+    print "registration.oauth_authorize"
     if not current_user.is_anonymous:
-        return redirect(url_for('registration.index'))
+        # return redirect(url_for('registration.index'))
+        return redirect('/dashboard')
     oauth = OAuthSignIn.get_provider(provider)
     return oauth.authorize()
 
 
 @registration.route('/callback/<provider>')
 def oauth_callback(provider):
+    print "registration.oauth_callback"
     if not current_user.is_anonymous:
-        return redirect(url_for('registration.index'))
+        return redirect('/dashboard')
     oauth = OAuthSignIn.get_provider(provider)
     social_id, username, email = oauth.callback()
     if social_id is None:
         flash('Authentication failed.')
         return redirect(url_for('registration.index'))
     user = User.query.filter_by(social_id=social_id).first()
-    if not user:
+    if not user: #add new user
         user = User(social_id=social_id, nickname=username, email=email)
         db.session.add(user)
         db.session.commit()
     login_user(user, True)
-    return redirect(url_for('registration.index'))
+    return redirect('dashboard')
+    # return jsonify({'username': user.nickname, 'userid': user.id})

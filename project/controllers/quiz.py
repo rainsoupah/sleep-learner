@@ -12,25 +12,31 @@ from util.database import Dictionary, User, Response, db
 
 quiz_app = Blueprint('quiz', __name__)
 
-@quiz_app.route('/api/words')
+@quiz_app.route('/api/words', methods=['GET'])
 def get_words():
+        userId = request.args['userId']
         wordlist = []
+        _subquery = db.session.query(Response)\
+                    .filter(Response.user_id == userId).subquery()
+
         _query = db.session.query(Dictionary)\
-            .outerjoin(Response, Response.word_id == Dictionary.id)\
-            .filter(Response.word_id == None)
+            .outerjoin(_subquery, _subquery.c.word_id == Dictionary.id)\
+            .filter(_subquery.c.word_id == None)
+            # .filter(Response.user_id == userId)\
+            # .filter(Response.word_id == Dictionary.id)
+            # .filter(Response.word_id == None)
+        print userId
         for entry in _query:
+            # print entry
             wordlist.append({
                 'idx': entry.id,
                 'word': entry.word,
                 'type': entry.type,
-                'defin': entry.definition,
+                'defin': entry.definition
+                # 'response': entry.Response.word_id
             })
         # return json.dumps(wordlist)
         return jsonify(results=wordlist)
-
-
-
-
 
 # POST data
 @quiz_app.route('/api/reply', methods=['POST'])

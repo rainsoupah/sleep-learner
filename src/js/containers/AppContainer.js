@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import App from '../components/app'
-import { updatePage } from '../actions'
+import { updatePage, signIn } from '../actions'
 
 const getUnknownWords = (words, idx) => {
   return words.filter((word, i) => i < idx)
@@ -17,6 +17,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onNext: (id) => {
       dispatch(updatePage(id))
+    },
+    onSignIn: () => {
+      dispatch(signIn())
     }
   }
 }

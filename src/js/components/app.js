@@ -9,7 +9,7 @@ import Dashboard from './dashboard'
 import FlashCard from '../containers/FlashCard'
 import PlayerSummary from './PlayerSummary'
 import PlayerContainer from '../containers/PlayerContainer'
-import AppBar from 'material-ui/AppBar'
+import AppHeader from './appheader'
 
 // import AppContainer from '../containers/AppContainer'
 
@@ -20,7 +20,7 @@ import AppBar from 'material-ui/AppBar'
 const App = ({ store }) => (
   <Provider store={store}>
     <div>
-      <AppBar title="Sleep Learner"/>
+      <AppHeader/>
       <Router history={browserHistory}>
           <Route path="/" component={WelcomeContainer}/>
           <Route path="/dashboard" component={Dashboard}/>

@@ -6,7 +6,7 @@ import { Link } from 'react-router'
 
 // to pass functions: must add {} around prop
 
-const Welcome = ({getWords}) => (
+const Welcome = () => (
 
   <div>
 
@@ -17,23 +17,24 @@ const Welcome = ({getWords}) => (
       <li> connect with player, reading definitions</li>
       <li> issue with react router conflicts flask: see catch-all routing</li>
       <li> UI: display stats dashboard</li>
-      <li> Play and pause, toggle position like mp3 player</li>
+      <li> pass userid to store need to update </li>
     </ul>
 
     <ul> Optional
       <li> set time out: inaccuracy aligning words with sound play (Player.js)</li>
     </ul>
     <button>
-      <Link to="/dashboard" onClick={() => getWords("userId")}>
-        Loggin
-      </Link>
+
     </button>
   </div>
 
 )
 
-Welcome.propTypes = {
-  getWords: PropTypes.func.isRequired
-}
+// <Link to="/dashboard" onClick={() => getWords("userId")}>
+//   Loggin
+// </Link>
+// Welcome.propTypes = {
+//   getWords: PropTypes.func.isRequired
+// }
 
 export default Welcome
