@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-// import { signIn, signOut } from '../actions'
+import { signIn } from '../actions'
 import {connect} from 'react-redux'
 
 import AppBar from 'material-ui/AppBar'
@@ -21,12 +21,22 @@ const LogOut = ({activeUser}) => (
   </div>
 )
 
-const AppHeaderPres = ( {isLoggedIn, activeUser} ) => (
-  <AppBar title="SleepLearner"
-          iconElementRight={isLoggedIn? <LogOut activeUser={activeUser}/> : <LogIn />}
-          iconElementLeft={null}
-  />
-)
+class AppHeaderPres extends React.Component {
+  componentWillMount() {
+    console.log("componentWillMount in appheader.js")
+    // const _this = this
+    // this.props.signIn()
+    this.props._signIn()
+  }
+  render() {
+    return(
+      <AppBar title="SleepLearner"
+              iconElementRight={this.props.isLoggedIn? <LogOut activeUser={this.props.activeUser}/> : <LogIn />}
+              iconElementLeft={null}
+      />
+    )
+  }
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -35,18 +45,18 @@ const mapStateToProps = (state) => {
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     onSignOut: () => {
-//       dispatch(signOut())
-//     }
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    _signIn: () => {
+      dispatch(signIn())
+    }
+  }
+}
 
 const AppHeader = connect(
   mapStateToProps,
-  // mapDispatchToProps
-  null
+  mapDispatchToProps
+  // null
 )(AppHeaderPres)
 
 export default AppHeader

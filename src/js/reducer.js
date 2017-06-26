@@ -18,7 +18,7 @@ function user(state={}, action) {
         ...state,
         userid: action.id,
         username: action.name,
-        isLoggedIn: true
+        isLoggedIn: action.id > 0 ? true : false
       }
       break;
     // case "SIGN_OUT_SUCCESS":

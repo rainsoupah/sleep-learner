@@ -23,10 +23,16 @@ def index():
 
 @registration.route('/api/getUser')
 def get_user():
-    return jsonify({
-        'username': current_user.nickname,
-        'userid': current_user.id
-    })
+    if not current_user.is_anonymous:
+        return jsonify({
+            'username': current_user.nickname,
+            'userid': current_user.id
+        })
+    else:
+        return jsonify({
+            'username' : "",
+            'userid' : 0
+        })
 
 @registration.route('/logout')
 def logout():
