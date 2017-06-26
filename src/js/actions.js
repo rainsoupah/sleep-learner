@@ -42,14 +42,14 @@ export function fetchWords(user) {
   return function (dispatch) {
 
     dispatch({ type: "FETCH_WORDS_START" }) // dispatch action
-    
-    return axios.get("/api/words/", {
+
+    return axios.get("/api/words", {
       params: {
-        userId: user
+        userId: 1
       }
     })
     .then((response) => {
-      // console.log(response)
+      console.log(response)
       dispatch({type: "FETCH_WORDS_SUCCESS", payload: response.data.results})
     })
     .catch((err) => {

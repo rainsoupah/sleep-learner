@@ -8,7 +8,7 @@ class DashboardPres extends React.Component{
     console.log("calling signIn function")
     const _this = this
     _this.props.signIn()
-    setTimeout(_this.props.fetchWords(this.props.activeUser),1000)
+    setTimeout(_this.props.fetchWords(1),1000)
   }
 
   render() {
