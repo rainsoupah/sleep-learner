@@ -45,7 +45,7 @@ export function fetchWords(user) {
 
     return axios.get("/api/words", {
       params: {
-        userId: 1
+        userId: user,
       }
     })
     .then((response) => {
