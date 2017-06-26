@@ -3,6 +3,8 @@ from flask import Blueprint
 from flask import jsonify
 from flask import request
 
+from flask_login import current_user
+
 from os import getcwd
 import csv,sqlite3
 import json
@@ -14,7 +16,12 @@ quiz_app = Blueprint('quiz', __name__)
 
 @quiz_app.route('/api/words', methods=['GET'])
 def get_words():
-        userId = request.args['userId']
+    userId = request.args['userId']
+    # print current_user.id
+    # print userId
+
+    print "1" == 1
+    if ((not current_user.is_anonymous) and (str(current_user.id) == str(userId))):
         wordlist = []
         _subquery = db.session.query(Response)\
                     .filter(Response.user_id == userId).subquery()
@@ -38,6 +45,8 @@ def get_words():
         # return json.dumps(wordlist)
         # print len(wordlist)
         return jsonify(results=wordlist)
+    else:
+        return "You are not logged in my dear :)"
 
 # POST data
 @quiz_app.route('/api/reply', methods=['POST'])

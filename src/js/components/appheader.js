@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import { signIn, signOut } from '../actions'
+// import { signIn, signOut } from '../actions'
 import {connect} from 'react-redux'
 
 import AppBar from 'material-ui/AppBar'
@@ -32,21 +32,18 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    // onSignIn: () => {
-    //   dispatch(signIn())
-    // },
-    onSignOut: () => {
-      dispatch(signOut())
-    }
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     onSignOut: () => {
+//       dispatch(signOut())
+//     }
+//   }
+// }
 
 const AppHeader = connect(
   mapStateToProps,
-  mapDispatchToProps
-  // null
+  // mapDispatchToProps
+  null
 )(AppHeaderPres)
 
 export default AppHeader
