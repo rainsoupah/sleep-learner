@@ -22,7 +22,10 @@ const LogOut = ({activeUser}) => (
 )
 
 const AppHeaderPres = ( {isLoggedIn, activeUser} ) => (
-  <AppBar title="SleepLearner" iconElementRight={isLoggedIn? <LogOut activeUser={activeUser}/> : <LogIn />}/>
+  <AppBar title="SleepLearner"
+          iconElementRight={isLoggedIn? <LogOut activeUser={activeUser}/> : <LogIn />}
+          iconElementLeft={null}
+  />
 )
 
 const mapStateToProps = (state) => {

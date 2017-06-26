@@ -1,26 +1,28 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router'
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
+import FlatButton from 'material-ui/FlatButton'
 
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import RaisedButton from 'material-ui/RaisedButton';
-
-// when using spread operator (line 9) passes copy of todo
-// takes two props
-const Card = ({ activeWord, activeIdx, knownWords, user, onNextClick, onSummarize }) => (
-  <div>
-    <div> {activeWord.word} </div>
-    <div> {activeWord.defin} </div>
-    <button onClick={() => onNextClick(true, activeWord.idx, activeIdx)}> I Know </button>
-    <button onClick={() => onNextClick(false)}> I dont Know </button>
-
-    <button onClick={() => onSummarize(user.userid, knownWords)}>
-      <Link to="/playerSummary"> Enough, player summary</Link>
-    </button>
-
-  </div>
+const CardPres = ({ activeWord, activeIdx, knownWords, user, onNextClick, onSummarize }) => (
+  <Card>
+    <CardHeader
+      title={activeWord.word}
+      subtitle={activeWord.type}
+      actAsExpander={true}
+      showExpandableButton={true}
+    />
+    <CardText expandable={true}>
+      {activeWord.defin}
+    </CardText>
+    <CardActions>
+      <FlatButton label="I know" onTouchTap={() => onNextClick(true, activeWord.idx, activeIdx)}/>
+      <FlatButton label="Don't Know" onTouchTap={() => onNextClick(false)}/>
+      <FlatButton label="Proceed to Sleep Learn" onTouchTap={() => onSummarize(user.userid, knownWords)}/>
+    </CardActions>
+  </Card>
 )
 
-Card.propTypes = {
+CardPres.propTypes = {
   activeWord: PropTypes.object.isRequired,
   knownWords: PropTypes.arrayOf(PropTypes.number).isRequired,
   user: PropTypes.object.isRequired,
@@ -36,4 +38,4 @@ Card.propTypes = {
 // </ul>
 // wordsKnown: PropTypes.arrayOf(PropTypes.string).isRequired,
 
-export default Card
+export default CardPres

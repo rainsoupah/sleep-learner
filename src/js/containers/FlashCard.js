@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { addWordTo, replyWords } from '../actions'
-import Card from '../components/card'
+import CardPres from '../components/card'
 
 // getWords
 // const getVisibleTodos = (todos, filter) => {
@@ -47,6 +47,6 @@ const mapDispatchToProps = (dispatch) => {
 const FlashCard = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Card)
+)(CardPres)
 
 export default FlashCard
