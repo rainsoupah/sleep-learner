@@ -12,7 +12,7 @@ from util.database import Dictionary, User, Response, db
 registration = Blueprint('registration', __name__)
 
 lm = LoginManager()
-lm.login_view = 'index'
+lm.login_view = '/'
 @lm.user_loader
 def load_user(id):
     return User.query.get(int(id))

@@ -17,10 +17,6 @@ quiz_app = Blueprint('quiz', __name__)
 @quiz_app.route('/api/words', methods=['GET'])
 def get_words():
     userId = request.args['userId']
-    # print current_user.id
-    # print userId
-
-    print "1" == 1
     if ((not current_user.is_anonymous) and (str(current_user.id) == str(userId))):
         wordlist = []
         _subquery = db.session.query(Response)\
@@ -46,7 +42,7 @@ def get_words():
         # print len(wordlist)
         return jsonify(results=wordlist)
     else:
-        return "You are not logged in my dear :)"
+        return "You are not logged in my dear"
 
 # POST data
 @quiz_app.route('/api/reply', methods=['POST'])
@@ -56,10 +52,15 @@ def quiz_reply():
   user_id = data['user']
   words_ids = data['knownWords']
 
-  for i in range(len(words_ids)):
-      response = Response(user_id, words_ids[i])
-      db.session.add(response)
-      db.session.commit()
+  if (str(current_user.id) == str(user_id)):
+      for i in range(len(words_ids)):
+          response = Response(user_id, words_ids[i])
+          db.session.add(response)
+          db.session.commit()
+      return request.data
+  else:
+      return "BAD POST REQUEST: wrong user"
+
 
   # db = get_db_connection()
   # with db:
@@ -72,7 +73,7 @@ def quiz_reply():
   #         )
   # db.commit()
 
-  return request.data
+
 
 # direct sqlite commands:
 # def get_words(alphabet):
