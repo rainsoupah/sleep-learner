@@ -54,7 +54,12 @@ if __name__ == '__main__':
 
     @app.route('/dashboard')
     @login_required
-    def home():
+    def homePage():
+        return render_template('index.html')
+
+    @app.route('/quiz')
+    @login_required
+    def quizPage():
         return render_template('index.html')
 
     app.run()

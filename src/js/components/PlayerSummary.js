@@ -15,15 +15,15 @@ const styles = {
 };
 
 /******PRESENTATIONAL COMPONENT*****************/
-const noWords = () => (
+const NoWords = () => (
   <div>
     No Words to be learnt
   </div>
 )
 
-const hasWords = () => (
+const HasWords = () => (
   <div>
-    <FlatButton href="/player">
+    <FlatButton>
       <Link to="/player">
         Enter Sleep Learn Chamber
       </Link>
@@ -32,24 +32,27 @@ const hasWords = () => (
 )
 
 const PlayerSummaryPres = ({unknownWords}) => (
-
-  <div>
-      {unknownWords.length == 0 ? noWords : hasWords}
-      {unknownWords.map((wordSet, i) => (
-        <Card key={i}>
-          <CardHeader
-            title={wordSet.word}
-            actAsExpander={true}
-            showExpandableButton={true}
-          />
-          <CardText expandable={true} style={styles.card.text}>
-             {wordSet.defin}
-          </CardText>
-        </Card>
-      ))}
-  </div>
+  {unknownWords.length==0 ? <NoWords/> : <hasWords/>}
 )
 
+// <div>
+//   Unknown Words Summary
+// </div>
+// <div>
+//   {unknownWords.length == 0 ? <noWords/> : <hasWords/>}
+// </div>
+// {unknownWords.map((wordSet, i) => (
+//   <Card key={i}>
+//     <CardHeader
+//       title={wordSet.word}
+//       actAsExpander={true}
+//       showExpandableButton={true}
+//     />
+//     <CardText expandable={true} style={styles.card.text}>
+//        {wordSet.defin}
+//     </CardText>
+//   </Card>
+// ))}
 PlayerSummaryPres.propTypes = {
   unknownWords: PropTypes.arrayOf(PropTypes.object).isRequired
 }
