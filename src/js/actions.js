@@ -1,5 +1,8 @@
 import axios from "axios";
 
+export function moveCard(card) {
+  TweenLite.to(card, 5, {left:"542px", backgroundColor:"black"})
+}
 
 export function setAlphaFilter(alphabet) {
   return { type: "SET_ALPHA_FILTER", alphabet }
