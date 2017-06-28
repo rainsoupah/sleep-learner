@@ -1,0 +1,53 @@
+/*// colors
+$green: #36802D';
+$lightGreen: #C9DF8A;
+$darkGreen: #234D20;
+
+// center element
+.center-element {
+  position: fixed;
+  top:50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+     -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+       -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+// main
+body {
+  background-color: $lightGreen;
+  margin: 0;
+  padding: 0;
+}
+
+// div with border and icon
+.icon-container {
+  width: 110px;
+  height: 70px;
+  border-top: 5px solid $green;
+  border-bottom: 5px solid $green;
+  text-align: center;
+  &:after {
+    content: "";
+    border-right: 5px solid $green;
+    top: -10px;
+    right: 10px;
+    position: absolute;
+    height: 90px;
+  }
+  &:before {
+    content: "";
+    border-left: 5px solid $green;
+    top: -10px;
+    left: 10px;
+    position: absolute;
+    height: 90px;
+  }
+  span{
+    color: $darkGreen;
+    font-size: 25px;
+    margin-top: 18px;
+  }
+}*/
