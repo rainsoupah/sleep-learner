@@ -27,7 +27,10 @@ const styles = {
 		width: '600px',
 		margin: '5% auto',
 		height: '500px',
-		padding: '2%'
+		padding: '2%',
+		borderTopRightRadius: '70px',
+		borderBottomLeftRadius: '100px',
+		fontFamily: 'Patrick Hand SC, Cursive'
 	},
 	cardInner: {
 		width: '300px',
@@ -35,6 +38,8 @@ const styles = {
 		position: 'relative',
 		top: '-350px',
 		height: '200px',
+		borderTopRightRadius: '50px',
+		borderBottomLeftRadius: '60px',
 	},
 	cardWords: {
 		fontSize: '15px',
@@ -42,6 +47,7 @@ const styles = {
 	cardLearnProgress: {
 		fontSize: '17px',
 		textAlign: 'center',
+		color: '#879ea0',
 	},
 	cardControls: {
 		margin: 'auto',
@@ -56,6 +62,21 @@ const styles = {
 	},
 	cardLinearBar: {
 		width: '317px'
+	},
+	cardInnerTitle: {
+		fontSize: '20px',
+		color: '#374758',
+	},
+	cardInnerSubtitle: {
+		fontSize: '18px',
+		color: '#b7afaf',
+	},
+	cardInnerElapse: {
+		fontSize: '16px',
+		color: '#7b6e6e',
+		textAlign: 'end',
+		position: 'relative',
+		top: '50px',
 	}
 }
 var Controls = React.createClass({
@@ -166,13 +187,8 @@ var Player = React.createClass ({
 							total={this.props.progress.total}
 							position={this.props.progress.position}>
 					</Progress>
-					<CardText style={styles.cardLearnProgress} className="row">
-							<div className="col-sm-4">
-								  WORDS STUDIED: {this.props.activeIdx}/{this.props.allWords.length}
-							</div>
-							<div className="col-sm-8">
-									<LinearProgress mode="determinate" value={this.getStudyState()} style={styles.cardLinearBar}/>
-							</div>
+					<CardText style={styles.cardLearnProgress} >
+								  WORD {this.props.activeIdx}/{this.props.allWords.length}
 					</CardText>
 
 					<Card style={styles.cardInner}>
