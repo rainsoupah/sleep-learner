@@ -30,7 +30,8 @@ const styles = {
 		padding: '2%',
 		borderTopRightRadius: '70px',
 		borderBottomLeftRadius: '100px',
-		fontFamily: 'Patrick Hand SC, Cursive'
+		fontFamily: 'Patrick Hand SC, Cursive',
+		boxShadow:'#deedf3 6px 8px 20px 0px, rgba(0, 0, 0, 0.12) 0px 1px 4px'
 	},
 	cardInner: {
 		width: '300px',
