@@ -14,7 +14,8 @@ import ArrowForward from 'material-ui/svg-icons/navigation/arrow-forward'
 
 const styles = {
   TableWrap: {
-    margin: '1% 25%',
+    margin: '1% auto',
+    width: '700px',
   },
   TableMain: {
     width: 'inherit',
