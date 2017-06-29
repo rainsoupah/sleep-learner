@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 
 import AppBar from 'material-ui/AppBar'
 import FlatButton from 'material-ui/FlatButton'
+import IconMenu from 'material-ui/IconMenu'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 
 const LogIn = ({signIn}) => (
   <FlatButton>
@@ -12,12 +14,19 @@ const LogIn = ({signIn}) => (
 )
 
 //add onClick event
-const LogOut = ({activeUser}) => (
+const LogOut = ({props, activeUser}) => (
   <div>
+    <IconMenu
+      {...props}
+      iconButtonElement={
+        <IconButton><MoreVertIcon /></IconButton>
+      }
+    >
+      <MenuItem primaryText="Start Quiz" />
+      <MenuItem primaryText="Sign out" href='/logout'/>
+    </IconMenu>
+
     <div> { activeUser } </div>
-    <FlatButton>
-      <a href='/logout'> Logout </a>
-    </FlatButton>
   </div>
 )
 
@@ -30,9 +39,8 @@ class AppHeaderPres extends React.Component {
   }
   render() {
     return(
-      <AppBar title={this.props.title}
-              iconElementRight={this.props.isLoggedIn? <LogOut activeUser={this.props.activeUser}/> : <LogIn />}
-              iconElementLeft={null}
+      <AppBar title="Sleep Learn SAT"
+              iconElementLeft={this.props.isLoggedIn? <LogOut activeUser={this.props.activeUser}/> : <LogIn />}
       />
     )
   }
