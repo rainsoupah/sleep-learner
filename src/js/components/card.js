@@ -12,8 +12,6 @@ import Assessment from 'material-ui/svg-icons/action/assessment'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import RaisedButton from 'material-ui/RaisedButton'
 
-// import './card.css'
-
 const styles = {
   card: {
     margin: '100px auto',
@@ -21,6 +19,7 @@ const styles = {
     // height: 300,
     width: 450,
     position: 'relative',
+    fontFamily: 'Architects Daughter, Regular'
     // paddingBottom: '10px',
     // borderStyle:'dotted',
     // zIndex: 'auto'
@@ -93,7 +92,7 @@ const CardPres = ({ activeWord, activeIdx, knownWords, user, onNextClick, onSumm
           icon={<Check color="#66ff66"/>} label="Known" primary={true}
         />
         <FlatButton onTouchTap={() => onNextClick(false)}
-          icon={<Close color="#ff4d4d"/>} label="Unknown" secondary="true"
+          icon={<Close color="#ff4d4d"/>} label="Unknown" secondary={true}
         />
       </CardActions>
     </Card>
@@ -108,13 +107,5 @@ CardPres.propTypes = {
   onNextClick: PropTypes.func.isRequired,
   onSummarize: PropTypes.func.isRequired
 }
-
-// <div onClick={() => onKnowClick("123123")}> {activeLetter} </div>
-// <ul>
-//   {wordsKnown.map((item, index) =>
-//     <li key={index}> {item} </li>
-//   )}
-// </ul>
-// wordsKnown: PropTypes.arrayOf(PropTypes.string).isRequired,
 
 export default CardPres
