@@ -16,13 +16,9 @@ const styles = {
   card: {
     margin: '100px auto',
     float: 'none',
-    // height: 300,
     width: 450,
     position: 'relative',
-    fontFamily: 'Architects Daughter, Regular'
-    // paddingBottom: '10px',
-    // borderStyle:'dotted',
-    // zIndex: 'auto'
+    fontFamily: 'Patrick Hand SC, Cursive'
   },
   text: {
     padding: '0px 16px 10px 16px',

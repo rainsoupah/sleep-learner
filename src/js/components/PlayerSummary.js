@@ -17,15 +17,12 @@ import ArrowForward from 'material-ui/svg-icons/navigation/arrow-forward'
 // to pass functions: must add {} around prop
 const styles = {
   TableWrap: {
-    // borderCollapse: 'inherit',
-    // borderStyle: 'ridge',
     margin: '1% 25%',
   },
   TableMain: {
     width: 'inherit',
   },
   TableHeader: {
-    // width: '17%',
     backgroundColor: '#04294a',
   },
   HeaderCell: {
@@ -37,22 +34,15 @@ const styles = {
     borderStyle: 'hidden'
   },
   link: {
-    // textDecoration: 'none',
-    // color: '#fff',
     height:'56px',
     textAlign: 'right',
   },
   playerBut: {
-    // color:'white',
     height: '56px',
     fontSize: '15px',
     borderRadius: '17px',
     borderStyle: 'hidden'
   },
-  // playerIcon: {
-  //   color: 'green',
-  //   height: '56px',
-  // }
 };
 
 /******PRESENTATIONAL COMPONENT*****************/
