@@ -50,7 +50,7 @@ if __name__ == '__main__':
     app = create_app()
     @app.route('/')
     def welcome():
-        return render_template('welcome.html')
+        return render_template('index.html')
 
     @app.route('/dashboard')
     @login_required

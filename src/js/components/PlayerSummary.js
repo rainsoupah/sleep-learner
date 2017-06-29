@@ -19,6 +19,7 @@ const styles = {
   },
   TableMain: {
     width: 'inherit',
+    borderCollapse: 'none',
   },
   TableHeader: {
     backgroundColor: '#04294a',
@@ -41,6 +42,11 @@ const styles = {
     borderRadius: '17px',
     borderStyle: 'hidden'
   },
+  TableBody: {
+    borderColor: '#d4dce2',
+    borderWidth: '1px',
+    borderStyle: 'ridge'
+  }
 };
 
 /******PRESENTATIONAL COMPONENT*****************/
@@ -70,7 +76,7 @@ const PlayerSummaryPres = ({unknownWords}) => (
                 </TableHeaderColumn>
               </TableRow>
             </TableHeader>
-            <TableBody displayRowCheckbox={false}>
+            <TableBody displayRowCheckbox={false} style={styles.TableBody}>
               {unknownWords.map((_word, i) => (
                 <TableRow key={i}>
                   <TableRowColumn> {i+1}</TableRowColumn>

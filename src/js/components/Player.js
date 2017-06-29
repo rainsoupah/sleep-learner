@@ -117,7 +117,7 @@ var Progress = React.createClass({
 		// value = this.props.position
 		return (
       <div style={styles.cardCircProgress}>
-        <CircularProgress mode="determinate" value={0.99} max={1} size={400}/>
+        <CircularProgress mode="determinate" value={this.props.position} max={1} size={400}/>
       </div>
 
 		)
