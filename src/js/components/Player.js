@@ -1,6 +1,8 @@
 import React, {PropTypes} from 'react'
 import Sound from 'react-sound'
-import LinearProgress from 'material-ui/LinearProgress';
+import CircularProgress from 'material-ui/CircularProgress'
+import LinearProgress from 'material-ui/LinearProgress'
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
 
 // UI ------------------------------------------------------------------------
 import PlayCircleOutline from 'material-ui/svg-icons/av/play-circle-outline'
@@ -20,39 +22,76 @@ import IconButton from 'material-ui/IconButton'
 //   })
 // }
 
+const styles = {
+	cardOuter: {
+		width: '600px',
+		margin: '5% auto',
+		height: '500px',
+		padding: '2%'
+	},
+	cardInner: {
+		width: '300px',
+		margin: 'auto',
+		position: 'relative',
+		top: '-350px',
+		height: '200px',
+	},
+	cardWords: {
+		fontSize: '15px',
+	},
+	cardLearnProgress: {
+		fontSize: '17px',
+		textAlign: 'center',
+	},
+	cardControls: {
+		margin: 'auto',
+    width: '150px',
+    position: 'relative',
+    top: '-330px',
+	},
+	cardCircProgress: {
+		width: '400px',
+		height: '400px',
+		margin: 'auto',
+	},
+	cardLinearBar: {
+		width: '317px'
+	}
+}
 var Controls = React.createClass({
 	render() {
     let type;
     let nextStatus;
     if (this.props.isPlaying == Sound.status.PLAYING) {
-      type = <PauseCircleOutline color="black" />
+      type = <PauseCircleOutline color="green" />
       nextStatus = 1 //paused
     } else {
-      type = <PlayCircleOutline color="black" />
+      type = <PlayCircleOutline color="#00bcd4" />
       nextStatus = 0 //playing
     }
     const stop = <Stop color="black" />
-    const ff = <FastForward color="black"/>
-    const fr = <FastRewind color="black"/>
+    const ff = <FastForward color="#00bcd4"/>
+    const fr = <FastRewind color="#00bcd4"/>
 
 		return (
-      <div>
-        <IconButton onTouchTap={()=>this.props.toggleButton(nextStatus)}>{type}</IconButton>
-        <IconButton onTouchTap={()=>this.props.toggleButton(2)}>{stop}</IconButton>
-        <IconButton onTouchTap={()=>this.props.forward()}>{ff}</IconButton>
+      <div style={styles.cardControls}>
         <IconButton onTouchTap={()=>this.props.backward()}>{fr}</IconButton>
+				<IconButton onTouchTap={()=>this.props.toggleButton(nextStatus)}>{type}</IconButton>
+        <IconButton onTouchTap={()=>this.props.forward()}>{ff}</IconButton>
       </div>
 
 		)
 	}
 });
 
+// <IconButton onTouchTap={()=>this.props.toggleButton(2)}>{stop}</IconButton>
+
 var Progress = React.createClass({
 	render() {
-
+		// value = this.props.position
 		return (
-      <div>
-        <LinearProgress mode="determinate" value={this.props.position} max={1} />
+      <div style={styles.cardCircProgress}>
+        <CircularProgress mode="determinate" value={0.99} max={1} size={400}/>
       </div>
 
 		)
@@ -115,25 +154,47 @@ var Player = React.createClass ({
         (seconds < 10 ? '0' : '') + seconds;
   },
 
+	getStudyState() {
+		return (this.props.activeIdx/this.props.allWords.length)
+	},
+
   render(){
     return (
-      <div>
-        {this.props.activeWord.word} , {this.props.activeWord.defin}
-        <Controls isPlaying={this.props.playStatus}
-                  toggleButton={this.props.updateStatus}
-                  forward={this.props.forward}
-                  backward={this.props.backward}
-                  />
-        <Sound url={this.props.activeUrl}
-              playStatus={this.props.playStatus}
-              onPlaying={this.handlePlaying}
-              playFromPosition={this.props.playFromPosn}
-              onFinishedPlaying={this.getNextTrack} />
-        <Progress
-            elapsed={this.props.progress.elapsed}
-            total={this.props.progress.total}
-            position={this.props.progress.position}/>
-      </div>
+				<Card style={styles.cardOuter}>
+					<Progress
+							elapsed={this.props.progress.elapsed}
+							total={this.props.progress.total}
+							position={this.props.progress.position}>
+					</Progress>
+					<CardText style={styles.cardLearnProgress} className="row">
+							<div className="col-sm-4">
+								  WORDS STUDIED: {this.props.activeIdx}/{this.props.allWords.length}
+							</div>
+							<div className="col-sm-8">
+									<LinearProgress mode="determinate" value={this.getStudyState()} style={styles.cardLinearBar}/>
+							</div>
+					</CardText>
+
+					<Card style={styles.cardInner}>
+						<CardHeader style={styles.cardWords}
+							title={this.props.activeWord.word}
+							subtitle={this.props.activeWord.defin}/>
+						<CardText>
+							{this.props.progress.elapsed}/{this.props.progress.total}
+						</CardText>
+					</Card>
+
+					<Controls isPlaying={this.props.playStatus}
+										toggleButton={this.props.updateStatus}
+										forward={this.props.forward}
+										backward={this.props.backward}
+										/>
+					<Sound url={this.props.activeUrl}
+						              playStatus={this.props.playStatus}
+						              onPlaying={this.handlePlaying}
+						              playFromPosition={this.props.playFromPosn}
+						              onFinishedPlaying={this.getNextTrack} />
+				</Card>
     )
   }
 
