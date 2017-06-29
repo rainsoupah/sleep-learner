@@ -36,24 +36,25 @@ const styles = {
 		width: '300px',
 		margin: 'auto',
 		position: 'relative',
-		top: '-350px',
+		top: '-370px',
 		height: '200px',
 		borderTopRightRadius: '50px',
 		borderBottomLeftRadius: '60px',
+		boxShadow: 'rgba(0, 0, 0, 0.12) 6px -7px 20px 5px, rgba(0, 0, 0, 0.12) 0px 1px 4px'
 	},
 	cardWords: {
 		fontSize: '15px',
 	},
 	cardLearnProgress: {
-		fontSize: '17px',
-		textAlign: 'center',
+		fontSize: '25px',
+		textAlign: 'right',
 		color: '#879ea0',
 	},
 	cardControls: {
 		margin: 'auto',
     width: '150px',
     position: 'relative',
-    top: '-330px',
+    top: '-355px',
 	},
 	cardCircProgress: {
 		width: '400px',
@@ -64,12 +65,14 @@ const styles = {
 		width: '317px'
 	},
 	cardInnerTitle: {
-		fontSize: '20px',
+		fontSize: '36px',
 		color: '#374758',
+		fontFamily: 'Patrick Hand SC, Regular'
 	},
 	cardInnerSubtitle: {
-		fontSize: '18px',
+		fontSize: '16px',
 		color: '#b7afaf',
+		fontFamily: 'Patrick Hand SC, Regular'
 	},
 	cardInnerElapse: {
 		fontSize: '16px',
@@ -77,6 +80,7 @@ const styles = {
 		textAlign: 'end',
 		position: 'relative',
 		top: '50px',
+		fontFamily: 'Patrick Hand SC, Regular'
 	}
 }
 var Controls = React.createClass({
@@ -194,8 +198,10 @@ var Player = React.createClass ({
 					<Card style={styles.cardInner}>
 						<CardHeader style={styles.cardWords}
 							title={this.props.activeWord.word}
-							subtitle={this.props.activeWord.defin}/>
-						<CardText>
+							titleStyle={styles.cardInnerTitle}
+							subtitle={this.props.activeWord.defin}
+							subtitleStyle={styles.cardInnerSubtitle}/>
+						<CardText style={styles.cardInnerElapse}>
 							{this.props.progress.elapsed}/{this.props.progress.total}
 						</CardText>
 					</Card>
