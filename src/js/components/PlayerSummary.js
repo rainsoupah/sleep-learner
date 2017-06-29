@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react'
 import { Link } from 'react-router'
 import {connect} from 'react-redux'
-// import {Card, CardHeader, CardText} from 'material-ui/Card'
 import FlatButton from 'material-ui/FlatButton'
 import {
   Table,
@@ -13,8 +12,6 @@ import {
 } from 'material-ui/Table'
 import ArrowForward from 'material-ui/svg-icons/navigation/arrow-forward'
 
-
-// to pass functions: must add {} around prop
 const styles = {
   TableWrap: {
     margin: '1% 25%',
@@ -46,22 +43,6 @@ const styles = {
 };
 
 /******PRESENTATIONAL COMPONENT*****************/
-// const NoWords = () => (
-//   <div>
-//     No Words to be learnt
-//   </div>
-// )
-//
-// const HasWords = () => (
-//   <div>
-//     <FlatButton>
-//       <Link to="/player">
-//         Enter Sleep Learn Chamber
-//       </Link>
-//     </FlatButton>
-//   </div>
-// )
-
 const PlayerSummaryPres = ({unknownWords}) => (
   <div>
 
@@ -108,8 +89,6 @@ const PlayerSummaryPres = ({unknownWords}) => (
 
 )
 
-
-
 PlayerSummaryPres.propTypes = {
   unknownWords: PropTypes.arrayOf(PropTypes.object).isRequired
 }
@@ -118,11 +97,6 @@ PlayerSummaryPres.propTypes = {
 const getUnknownWords = (words, idx) => {
   return words.filter((word, i) => i < idx)
 }
-
-// const numUnknownWords = (words) => {
-//   return words.filter((word, i) => i < idx).length
-// }
-
 const mapStateToProps = (state) => {
   return {
     unknownWords: getUnknownWords(state.words, state.wordIdx)
@@ -143,5 +117,4 @@ const PlayerSummary = connect(
   null
 )(PlayerSummaryPres)
 
-// Note: export container component
 export default PlayerSummary

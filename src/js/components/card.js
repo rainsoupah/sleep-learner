@@ -4,8 +4,6 @@ import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
 import FlatButton from 'material-ui/FlatButton'
 import ReactDOM from 'react-dom'
 
-// import CheckCircle from 'material-ui/svg-icons/action/checkCircle'
-// import DoneAll from 'material-ui/svg-icons/action/doneAll'
 import Close from 'material-ui/svg-icons/navigation/close'
 import Check from 'material-ui/svg-icons/navigation/check'
 import Assessment from 'material-ui/svg-icons/action/assessment'
@@ -36,7 +34,6 @@ const styles = {
   },
   checkButton: {
     marginRight: '56%',
-    // marginLeft: '10%',
   },
   cancelButton: {
     float:'right',
@@ -95,7 +92,6 @@ const CardPres = ({ activeWord, activeIdx, knownWords, user, onNextClick, onSumm
 
   </div>
 )
-
 
 CardPres.propTypes = {
   knownWords: PropTypes.arrayOf(PropTypes.number).isRequired,
