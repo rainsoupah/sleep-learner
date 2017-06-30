@@ -18,6 +18,7 @@ const styles={
     borderBottomColor: '#b0b0bf',
     backgroundColor: 'white',
     boxShadow: 'none',
+    fontFamily: 'Patrick Hand Sc, Regular',
   },
   headerTitle: {
     fontSize: '16px',
