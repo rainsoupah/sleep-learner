@@ -80,7 +80,7 @@ const styles = {
 		color: '#7b6e6e',
 		textAlign: 'end',
 		position: 'relative',
-		top: '25px',
+		top: '10px',
 		fontFamily: 'Patrick Hand SC, Regular'
 	}
 }
@@ -146,12 +146,17 @@ var Player = React.createClass ({
     return allWords[idx].word + '.' + allWords[idx].defin + '.';
   },
 
+	resetPosition() {
+		this.props.handleProgress(this.props.progress.elapsed, this.props.progress.total, 0)
+	},
+
   getNextTrack() {
     // const _this = this;
 
     if (this.props.activeIdx < this.props.allWords.length-1) {
 			this.props.updateStatus(1); //pause
-      this.props.getUrlAndWord(this.combineWordDefin()) //also plays
+			this.resetPosition();
+      this.props.getUrlAndWord(this.combineWordDefin())
     } else {
       console.log("end of words");
 			this.props.updateStatus(1); //pause

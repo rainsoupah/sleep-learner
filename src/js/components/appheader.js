@@ -22,10 +22,15 @@ const styles={
     fontSize: '30px'
   },
   headerTitle: {
-    fontSize: '16px',
+    position: 'relative',
+    // left: '-90%',
+    fontSize: '20px',
     fontColor: '#374758',
     textAlign: 'right',
     paddingTop: '19px',
+  },
+  menuItem: {
+    fontFamily: 'Patrick Hand Sc'
   }
 }
 
@@ -41,6 +46,7 @@ const LogOut = ({props, activeUser}) => (
       iconButtonElement={
         <IconButton><MoreVertIcon /></IconButton>
       }
+      menuItemStyle={styles.menuItem}
     >
       <MenuItem primaryText="Start Quiz" href='/quiz'/>
       <MenuItem primaryText="Sign out" href='/logout'/>
