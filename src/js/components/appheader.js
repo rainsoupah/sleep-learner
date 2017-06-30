@@ -19,6 +19,7 @@ const styles={
     backgroundColor: 'white',
     boxShadow: 'none',
     fontFamily: 'Patrick Hand Sc, Regular',
+    fontSize: '30px'
   },
   headerTitle: {
     fontSize: '16px',

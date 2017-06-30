@@ -80,7 +80,7 @@ const styles = {
 		color: '#7b6e6e',
 		textAlign: 'end',
 		position: 'relative',
-		top: '50px',
+		top: '25px',
 		fontFamily: 'Patrick Hand SC, Regular'
 	}
 }
@@ -151,8 +151,7 @@ var Player = React.createClass ({
 
     if (this.props.activeIdx < this.props.allWords.length-1) {
 			this.props.updateStatus(1); //pause
-      this.props.getUrlAndWord(this.combineWordDefin())
-			this.props.updateStatus(0)//play again
+      this.props.getUrlAndWord(this.combineWordDefin()) //also plays
     } else {
       console.log("end of words");
 			this.props.updateStatus(1); //pause
