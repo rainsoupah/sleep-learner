@@ -143,7 +143,7 @@ var Player = React.createClass ({
   combineWordDefin(first=false) {
     const {allWords, activeIdx} = this.props;
     var idx = first ? activeIdx : activeIdx + 1;
-    return allWords[idx].word + '.' + allWords[idx].defin;
+    return allWords[idx].word + '.' + allWords[idx].defin + '.';
   },
 
   getNextTrack() {

@@ -119,8 +119,12 @@ export function signInAndGetWords() {
 
 export function getUrlAndWord(textData) {
   return function(dispatch, getState) {
-    return dispatch(fetchVoice(textData)).then(() => {
+    return dispatch(fetchVoice(textData))
+    .then(() => {
       return dispatch(incrementIdx())
+    })
+    .then(() => {
+      return dispatch(togglePlay(0))
     })
   }
 }

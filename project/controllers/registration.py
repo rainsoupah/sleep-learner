@@ -45,7 +45,7 @@ def oauth_authorize(provider):
     print "registration.oauth_authorize"
     if not current_user.is_anonymous:
         # return redirect(url_for('registration.index'))
-        return redirect('/dashboard')
+        return redirect('/quiz')
     oauth = OAuthSignIn.get_provider(provider)
     return oauth.authorize()
 
@@ -54,17 +54,17 @@ def oauth_authorize(provider):
 def oauth_callback(provider):
     print "registration.oauth_callback"
     if not current_user.is_anonymous:
-        return redirect('/dashboard')
+        return redirect('/quiz')
     oauth = OAuthSignIn.get_provider(provider)
     social_id, username, email = oauth.callback()
     if social_id is None:
         flash('Authentication failed.')
-        return redirect(url_for('registration.index'))
+        return redirect(url_for('/'))
     user = User.query.filter_by(social_id=social_id).first()
     if not user: #add new user
         user = User(social_id=social_id, nickname=username, email=email)
         db.session.add(user)
         db.session.commit()
     login_user(user, True)
-    return redirect('dashboard')
+    return redirect('/quiz')
     # return jsonify({'username': user.nickname, 'userid': user.id})
