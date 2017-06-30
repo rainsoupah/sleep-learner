@@ -117,6 +117,14 @@ export function signInAndGetWords() {
   }
 }
 
+export function getUrlAndWord(textData) {
+  return function(dispatch, getState) {
+    return dispatch(fetchVoice(textData)).then(() => {
+      return dispatch(incrementIdx())
+    })
+  }
+}
+
 export function signOut() {
   dispatch({type: "USER_SIGN_OUT" })
 }

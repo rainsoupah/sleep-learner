@@ -147,15 +147,15 @@ var Player = React.createClass ({
   },
 
   getNextTrack() {
-    const _this = this;
+    // const _this = this;
 
     if (this.props.activeIdx < this.props.allWords.length-1) {
-      this.props.getNextUrl(this.combineWordDefin());
-      setTimeout(function() {
-        _this.props.getNextWord(); // display next word
-      }, 750)
+			this.props.updateStatus(1); //pause
+      this.props.getUrlAndWord(this.combineWordDefin())
+			this.props.updateStatus(0)//play again
     } else {
       console.log("end of words");
+			this.props.updateStatus(1); //pause
     }
   },
 

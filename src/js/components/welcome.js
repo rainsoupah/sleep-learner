@@ -1,7 +1,7 @@
 import React, {PropTypes} from 'react'
 // import Dashboard from './dashboard'
 import { Link } from 'react-router'
-import './welcome.css'
+// import './welcome.css'
 
 
 // to pass functions: must add {} around prop

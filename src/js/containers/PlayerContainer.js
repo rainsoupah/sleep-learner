@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import { fetchVoice, incrementIdx, togglePlay, changePosition, handleProgress } from '../actions'
+import { fetchVoice, incrementIdx, togglePlay, changePosition, handleProgress, getUrlAndWord } from '../actions'
 import Player from '../components/Player.js'
 import Sound from 'react-sound'
 
@@ -55,6 +55,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleProgress: (elapsed, total, position) => {
       dispatch(handleProgress(elapsed, total, position))
+    },
+    getUrlAndWord: (textData) => {
+      dispatch (getUrlAndWord(textData))
     }
 
   }
