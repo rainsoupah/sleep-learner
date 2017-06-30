@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { addWordTo, replyWords } from '../actions'
+import { addWordTo, replyWords, signInAndGetWords} from '../actions'
 import CardPres from '../components/card'
 
 const getVocab = (words, idx) => {
@@ -22,6 +22,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onSummarize: (user, knownWords) => {
       dispatch(replyWords(user, knownWords))
+    },
+    _initData: () => {
+      dispatch(signInAndGetWords())
     }
   }
 }

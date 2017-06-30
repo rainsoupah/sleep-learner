@@ -60,7 +60,7 @@ const styles = {
   }
 };
 
-const CardPres = ({ activeWord, activeIdx, knownWords, user, onNextClick, onSummarize }) => (
+const CardSingle = ({ activeWord, activeIdx, knownWords, user, onNextClick, onSummarize }) => (
   <div >
     <Card style={styles.card}>
       <Link to="/playerSummary" style={styles.link}>
@@ -92,6 +92,24 @@ const CardPres = ({ activeWord, activeIdx, knownWords, user, onNextClick, onSumm
 
   </div>
 )
+
+class CardPres extends React.Component {
+  componentDidMount() {
+    this.props._initData();
+  }
+  render() {
+    return (
+      <CardSingle
+        activeWord={this.props.activeWord}
+        activeIdx={this.props.activeIdx}
+        knownWords={this.props.knownWords}
+        user={this.props.user}
+        onNextClick={this.props.onNextClick}
+        onSummarize={this.props.onSummarize}
+        />
+    )
+  }
+}
 
 CardPres.propTypes = {
   knownWords: PropTypes.arrayOf(PropTypes.number).isRequired,
