@@ -35,17 +35,6 @@ def create_app():
     app.register_blueprint(registration)
     return app
 
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(BASE_DIR, 'sleep.db')
-# db = SQLAlchemy(app)
-
-# app.register_blueprint(registration)
-#database setup
-    # @app.route('/', defaults={'path': ''})
-    # @app.route('/<path:path>')
-    # def catch_all(path):
-    #     return render_template('index.html')
-
-
 if __name__ == '__main__':
     app = create_app()
     @app.route('/')

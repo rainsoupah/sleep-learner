@@ -1,7 +1,9 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
+import { compose, createStore, applyMiddleware } from 'redux'
+import {persistStore, autoRehydrate} from 'redux-persist'
+
 import logger from "redux-logger";
 import thunk from "redux-thunk";
 
@@ -47,8 +49,9 @@ const initialState = {
 // ONLY CREATE 1 STORE for each application, 2nd arg = initial state, 3RD arg=enhancers
 // logger: logs prev, current and action
 const middleware = applyMiddleware(thunk, logger())
-const store = createStore(sleepLearn, initialState, middleware)
+const store = createStore(sleepLearn, initialState, compose(middleware, autoRehydrate()))
 
+persistStore(store);
 export default store;
 
 // Log the initial state
