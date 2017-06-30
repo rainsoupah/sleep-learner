@@ -13,13 +13,39 @@ import {
 import ArrowForward from 'material-ui/svg-icons/navigation/arrow-forward'
 
 const styles = {
+  note: {
+    fontFamily: "Patrick Hand Sc",
+    fontSize: '30px',
+    width: '40%',
+    margin: '10% auto',
+    textAlign: 'center',
+    padding: '5%',
+    borderWidth: '1.5px',
+    borderStyle: 'dotted',
+    borderColor: 'grey',
+    backgroundColor: 'tomato',
+    borderTopRightRadius: '100px',
+    borderBottomLeftRadius: '40px',
+  },
+  retToQuizBut: {
+    width: '100%',
+    backgroundColor: 'antiquewhite',
+    borderBottom: '10px dotted',
+    paddingBottom: '10%',
+    marginTop: '30px',
+  },
+  retToQuizLabel: {
+    fontSize: '18px',
+    fontFamily: 'Patrick Hand Sc',
+  },
+
   TableWrap: {
     margin: '1% auto',
     width: '700px',
   },
   TableMain: {
     width: 'inherit',
-    borderCollapse: 'none',
+    borderCollapse: 'inherit',
   },
   TableHeader: {
     backgroundColor: '#04294a',
@@ -49,10 +75,17 @@ const styles = {
   }
 };
 
-/******PRESENTATIONAL COMPONENT*****************/
 const PlayerSummaryPres = ({unknownWords}) => (
   <div>
-
+      {
+        unknownWords.length == 0 &&
+        <div style={styles.note}>
+          <div>You have marked 0 words unknown!</div>
+          <Link to="/quiz">
+            <FlatButton primary={true} label="Return to Quiz" style={styles.retToQuizBut} labelStyle={styles.retToQuizLabel}/>
+          </Link>
+        </div>
+      }
       {
         unknownWords.length > 0 &&
         (
@@ -100,7 +133,7 @@ PlayerSummaryPres.propTypes = {
   unknownWords: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
-/******CONTAINER COMPONENT*****************/
+
 const getUnknownWords = (words, idx) => {
   return words.filter((word, i) => i < idx)
 }

@@ -62,6 +62,16 @@ if __name__ == '__main__':
     def quizPage():
         return render_template('index.html')
 
+    @app.route('/playerSummary')
+    @login_required
+    def playerSummary():
+        return render_template('index.html')
+
+    @app.route('/player')
+    @login_required
+    def playerPage():
+        return render_template('index.html')
+
     app.run()
     # Because this is just a demonstration we set up the database like this.
     # if not os.path.isfile('/tmp/test.db'):
