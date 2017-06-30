@@ -20,9 +20,10 @@ const styles={
     boxShadow: 'none',
   },
   headerTitle: {
-    fontSize: '20px',
+    fontSize: '16px',
     fontColor: '#374758',
-    textAlign: 'left',
+    textAlign: 'right',
+    paddingTop: '19px',
   }
 }
 

@@ -1,9 +1,36 @@
 <html>
     <head>
-        <title>OAuth Flask Demo</title>
+        <title>Sleep Learner Welcome</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenLite.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TimelineLite.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/CSSPlugin.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/easing/EasePack.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Patrick+Hand+SC" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='welcome.css')}}">
     </head>
     <body>
-        WELCOME MY LOVES
-        <p><a href="{{ url_for('registration.oauth_authorize', provider='facebook') }}">Login with Facebook</a></p>
+        <p></p>
+        <div class="welcome-container">
+
+            <div class="welcome-row">
+                <div class="col-lg-12">
+                    <div class="welcome-message">
+                        <h1>S A T</h1>
+                        <h3>Made Easy</h3>
+                        <hr class="welcome-divider"></hr>
+                        <a href="{{ url_for('registration.oauth_authorize', provider='facebook') }}">
+                          <button type="button" class="btn btn-primary btn-lg mybtn" >
+                            START HERE
+                          </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </body>
 </html>

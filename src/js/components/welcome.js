@@ -1,31 +1,31 @@
 import React, {PropTypes} from 'react'
 // import Dashboard from './dashboard'
 import { Link } from 'react-router'
-
+import './welcome.css'
 
 
 // to pass functions: must add {} around prop
 
+
+
 const Welcome = () => (
 
-  <div>
+  <div className="welcome-container">
 
-    Welcome to Sleep Learner: loggin here
-    <ul> To Dos
-      <li> Implement a timer while "quiz" is running </li>
-      <li> loggin form (optional oauth) </li>
-      <li> connect with player, reading definitions</li>
-      <li> issue with react router conflicts flask: see catch-all routing</li>
-      <li> UI: display stats dashboard</li>
-      <li> pass userid to store need to update </li>
-    </ul>
-
-    <ul> Optional
-      <li> set time out: inaccuracy aligning words with sound play (Player.js)</li>
-    </ul>
-    <button>
-
-    </button>
+      <div className="welcome-row">
+          <div className="col-lg-12">
+              <div className="welcome-message">
+                  <h1>S A T</h1>
+                  <h3>Made Easy</h3>
+                  <hr className="welcome-divider"></hr>
+                  <ul className="list-inline">
+                      <li>photo1</li>
+                      <li>photo2</li>
+                      <li>photo3</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
   </div>
 
 )

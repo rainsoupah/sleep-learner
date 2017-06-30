@@ -1,0 +1,57 @@
+
+body {
+  margin: 10% 0px;
+}
+
+h1 {
+  font-size: 100px;
+
+}
+
+h3 {
+  font-size: 50px;
+}
+
+a {
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.mybtn {
+  color: black;
+  width: 100%;
+  background-color: white;
+}
+
+
+/*.welcome-container {
+  background: rgba(242,246,248,1);
+  background: -moz-linear-gradient(-45deg, rgba(242,246,248,1) 0%, rgba(207,199,227,1) 21%, rgba(153,195,219,1) 78%, rgba(224,239,249,1) 100%);
+  background: -webkit-linear-gradient(-45deg, rgba(242,246,248,1) 0%, rgba(207,199,227,1) 21%, rgba(153,195,219,1) 78%, rgba(224,239,249,1) 100%);
+  background: -o-linear-gradient(-45deg, rgba(242,246,248,1) 0%, rgba(207,199,227,1) 21%, rgba(153,195,219,1) 78%, rgba(224,239,249,1) 100%);
+  background: -ms-linear-gradient(-45deg, rgba(242,246,248,1) 0%, rgba(207,199,227,1) 21%, rgba(153,195,219,1) 78%, rgba(224,239,249,1) 100%);
+  background: linear-gradient(135deg, rgba(242,246,248,1) 0%, rgba(207,199,227,1) 21%, rgba(153,195,219,1) 78%, rgba(224,239,249,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f6f8', endColorstr='#e0eff9', GradientType=1 );
+}*/
+
+.welcome-divider {
+    width: 400px;
+    border-top: 1px solid #f8f8f8;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.welcome-row {
+    width: 400px;
+    margin: auto;
+}
+
+.list-inline {
+    padding-left: 0;
+    margin-left: -5px;
+    list-style: none;
+}
+
+.welcome-message {
+    margin: auto;
+    font-family: Patrick Hand SC;
+}

@@ -8,8 +8,6 @@ const getAllWords = (words, idx) => {
   return unknownWords
 }
 
-
-
 const getPlayStatus = (playing) => {
   switch (playing) {
     case 0:

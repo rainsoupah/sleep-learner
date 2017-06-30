@@ -193,7 +193,7 @@ var Player = React.createClass ({
 							position={this.props.progress.position}>
 					</Progress>
 					<CardText style={styles.cardLearnProgress} >
-								  WORD {this.props.activeIdx}/{this.props.allWords.length}
+								  WORD {this.props.activeIdx+1}/{this.props.allWords.length}
 					</CardText>
 
 					<Card style={styles.cardInner}>
