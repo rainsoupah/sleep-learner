@@ -7,8 +7,6 @@ There are videos on youtube of a voice saying a word and its definition for hour
  
 The problem with this is you’re going to know a lot of the words. Wouldn’t it be more useful if it generated a mp3 personalized for you, based on words you find difficult? In this hackathon project, we quiz the user to find out what words he doesn’t know, then use a speech library to play the words and definitions as he falls asleep.
 
-# Project Demo
-![sleeplearndemo](https://user-images.githubusercontent.com/13390498/27753483-cc872d3e-5db3-11e7-8861-97c8aea0b594.gif)
 
 ## Installation
 
