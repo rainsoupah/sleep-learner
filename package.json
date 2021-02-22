@@ -6,7 +6,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "babel-core": "^6.17.0",
     "babel-loader": "^6.2.0",
     "babel-plugin-add-module-exports": "^0.1.2",
@@ -28,7 +28,7 @@
     "redux-promise-middleware": "^3.2.0",
     "redux-thunk": "^2.1.0",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^3.1.11"
   },
   "devDependencies": {},
   "scripts": {
